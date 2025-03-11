@@ -22,7 +22,9 @@
         </ul>
         <ul class="navbar-nav ml-auto d-flex align-items-center">
             <li class="nav-item">
-                <img src="~/image/avatar.png" alt="Avatar" style="width: 30px; height: 30px; border-radius: 20%;">
+                <a class=" @(ViewContext.RouteData.Values["action"].ToString() == "UAccount" ? "active" : "")" asp-controller="Home" asp-action="UAccount">
+                    <img src="~/image/avatar.png" alt="Avatar" style="width: 30px; height: 30px; border-radius: 20%;">
+                </a>
             </li>
             <li class="nav-item d-flex flex-column text-left" style="font-size: 14px; margin-left: 10px;">
                 <span style="color: white; font-family: 'Marvel', sans-serif;">Elizabeth Taylor</span>

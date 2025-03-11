@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["UAccount"] = "UAccount";
+}
+<partial name="_Unavbar" />
+<link rel="stylesheet" href="~/css/uaccount.css">
+
+<div class="account">
+    <div class="container">
+        <form>
+            <div class="top-content">
+                <div class="container2">
+                    <h1>Edit Profile</h1>
+                    <span>You can edit your profile below.</span><br>
+                </div>
+            </div>
+            <div class="avatar-wrapper">
+                <div class="avatar-overlay">
+                    <img src="~/image/avatar2.png" alt="Avatar" class="avatar">
+                    <div class="overlay-text">Edit photo</div>
+                </div>
+            </div>
+            <div class="inputs">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="fname">Firstname</label>
+                        <input id="fname" type="text" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="mname">Middle Initial</label>
+                        <input id="mname" type="text" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="lname">Lastname</label>
+                        <input id="lname" type="text" required />
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="email">Email Address</label>
+                        <input id="email" type="email" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="tel">Phone Number</label>
+                        <input id="tel" type="tel" required />
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="address">Address</label>
+                    <input id="address" type="text" required />
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input id="password" type="password" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="cpassword">Confirm Password</label>
+                        <input id="cpassword" type="password" required />
+                    </div>
+                </div>
+                <div class="button-row">
+                    <input class="cancel" type="submit" value="Cancel" />
+                    <input class="save" type="submit" value="Save Changes" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<partial name="_Ufooter" />
