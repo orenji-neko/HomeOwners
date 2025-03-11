@@ -1,9 +1,122 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    Layout = "_Layout";
 }
 
-<partial name="_Unavbar" />
+<link rel="stylesheet" href="~/css/sitelanding.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<div>
-    <h1 class="display-4">Landing Page Here 2</h1>
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <img src="~/image/image.png" alt="Background Image" class="hero-image">
+    <div class="hero-overlay">
+        <img src="~/image/logo.png" alt="LendSpace Logo" class="logo">
+        <h2>YOUR HOME, YOUR <span class="highlight">STORY</span></h2>
+        <p>From seamless facility reservations to booking the perfect home, we’re here to make every chapter of your story unforgettable.</p>
+        <a href="#" class="btn">Get Started</a>
+    </div>
 </div>
+
+<!-- Facility Reservation Section -->
+<div class="facility">
+    <!-- First Row -->
+    <div class="facility-row">
+        <div class="facility-text">
+            <h2 class="facility-title">WANTED TO GET STARTED?</h2>
+            <p>
+                Our website offers a seamless platform to explore, compare, and secure your ideal property.
+                With expert guidance, tailored listings, and user-friendly tools, we make your property journey simple and successful.
+            </p>
+        </div>
+        <div class="facility-image">
+            <img src="~/image/image.jpg" alt="Facility Image 1">
+        </div>
+    </div>
+
+    <!-- Second Row (Reversed) -->
+    <div class="facility-row reverse">
+        <div class="facility-image">
+            <div class="image-slider">
+                <button class="slider-btn left-btn">&#10094;</button>
+                <img src="~/image/image3.jpg" alt="Facility Image 2">
+                <button class="slider-btn right-btn">&#10095;</button>
+            </div>
+        </div>
+        <div class="facility-text">
+            <h2 class="facility-title">FACILITY RESERVATION</h2>
+            <p>
+                Simplify your planning with our Facility Reservation service. Easily book venues,
+                meeting spaces, or event halls tailored to your needs. Whether for business or pleasure,
+                we ensure a seamless reservation experience every time.
+            </p>
+            <a href="#" class="btn">VIEW</a>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Community Section -->
+<section class="community">
+    <div class="community-text">
+        <h2 class="community-title">HELLO, LENDSPACE COMMUNITY!</h2>
+        <p>
+            We’re excited to share the latest news, updates, and special announcements with you.
+            Whether it’s a new feature release, upcoming event, or important community notice,
+            this is your go-to spot for all things new and noteworthy. Stay tuned and stay connected!
+        </p>
+        <div class="community-buttons">
+            <a href="#" class="btn">FORUM</a>
+            <a href="#" class="btn">ANNOUNCEMENTS</a>
+        </div>
+    </div>
+    <div class="community-image">
+        <img src="~/image/12.png" alt="Community Image">
+    </div>
+</section>
+
+
+
+<!-- About Us Section -->
+<section class="about-us">
+    <div class="about-container">
+        <!-- Centered About Button & Title -->
+        <div class="about-header">
+            <button class="about-btn">ABOUT US</button>
+            <h2>TELL YOU MORE ABOUT US!</h2>
+        </div>
+
+        <div class="about-content">
+            <!-- Left Side: Text Content -->
+            <div class="about-text">
+                <h3>About Us</h3>
+                <p>Welcome to the LendSpace Association! Our vibrant and friendly community is dedicated to creating a safe, beautiful, and enjoyable living environment for all our residents.</p>
+
+                <h3>Our Mission</h3>
+                <p>Our mission is to foster a sense of community and pride among homeowners by maintaining high standards for property upkeep, organizing engaging events, and providing essential services.</p>
+
+                <ul>
+                    <li>Community-driven: Regular social gatherings and activities for all ages.</li>
+                    <li>Maintenance & Services: Professional property management and security.</li>
+                    <li>Communication: Timely updates, newsletters, and an active online platform.</li>
+                </ul>
+
+                <p>Join us to make our community a better place! Get involved, stay informed, and contribute to a thriving neighborhood.</p>
+            </div>
+
+            <!-- Right Side: Image & Socials -->
+            <div class="about-media">
+                <div class="about-image">
+                    <img src="~/image/image15.png" alt="About Us">
+                </div>
+                <div class="about-us-socials">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fas fa-envelope"></i> <!-- Gmail Icon -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

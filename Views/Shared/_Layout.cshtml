@@ -11,6 +11,17 @@
     <link rel="stylesheet" href="~/HomeOwners.styles.css" asp-append-version="true" />
 </head>
 <body>
+    @if (ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index")
+    {
+        <!-- Render the landing page navbar for the landing page -->
+    <partial name="_LandingNavbar" />
+    }
+    else
+    {
+ <!-- Render the default navbar for other pages -->
+    <partial name="_Unavbar" />
+    }
+
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
