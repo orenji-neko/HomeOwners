@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="~/css/uhome.css">
 
 <div class="image-container">
-    <img src="~/image/logo.png" alt="Logo" class="logo" style="width: auto; height: 150px;">
-    <img src="~/image/back1.png" alt="Background Image" class="background-image">
+    <img src="~/image/logo.png" alt="Logo" class="logo">
+    <div class="background-wrapper">
+        <img src="~/image/back1.png" alt="Background Image" class="background-image">
+    </div>
 </div>
 <div class="content-container">
     <div class="header-container">
@@ -50,7 +52,7 @@
     <div class="header-first">Featured</div>
     <div class="content-first">
         <div class="first-content">
-            <img src="~/image/fa1.png" height="350px" width="380px">
+            <img src="~/image/fa1.png" height="310px" width="280px">
             <div class="Details">
                 <h2>Willow Creek Manor</h2>
                 <p>This charming property is nestled in the scenic Blue Ridge Mountains, offering a mix of modern amenities and rustic charm.</p>
@@ -59,13 +61,15 @@
                     <span>Bathrooms: 3.5</span>
                     <span>Beedrooms: 4</span>
                     <span>Carolina, USA</span>
-                    <span><b>$850,000</b></span>
-                    <button>See more</button>
+                    <div class="bottom-details">
+                        <span><b>$850,000</b></span>
+                        <button>See more</button>
+                    </div>
                  </div>
             </div>
         </div>
         <div class="first-content">
-            <img src="~/image/fa2.png" height="350px" width="380px">
+            <img src="~/image/fa2.png" height="310px" width="280px">
             <div class="Details">
                 <h2>Cotswolds, England, UK</h2>
                 <p>A quaint countryside cottage with a thatched roof, surrounded by lush gardens and rolling hills. Perfect for a cozy retreat.</p>
@@ -74,8 +78,10 @@
                     <span>Bathrooms: 3.5</span>
                     <span>Beedrooms: 3</span>
                     <span>Carolina, USA</span>
-                    <span><b>$70,000</b></span>
-                    <button>See more</button>
+                    <div class="bottom-details">
+                        <span><b>$70,000</b></span>
+                        <button>See more</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -93,7 +99,7 @@
     <div class="header-first">Facility Reservation</div>
     <div class="content-first">
         <div class="first-content">
-            <img src="~/image/fa3.png" height="350px" width="380px">
+            <img src="~/image/fa3.png" height="310px" width="280px">
             <div class="Details">
                 <h2>Grand Vista Hall</h2>
                 <p>A stunning, versatile event space with floor-to-ceiling windows, elegant decor, and state-of-the-art amenities.</p>
@@ -102,27 +108,31 @@
                     <span>Bathrooms: 3.5</span>
                     <span>Beedrooms: 4</span>
                     <span>Carolina, USA</span>
-                    <span><b>$850,000</b></span>
-                    <button>See more</button>
+                    <div class="bottom-details">
+                        <span><b>$850,000</b></span>
+                        <button>See more</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="first-content">
-            <img src="~/image/fa4.png" height="350px" width="380px">
+            <img src="~/image/fa4.png" height="310px" width="280px">
             <div class="Details">
-                <h2>Cotswolds, England, UK</h2>
+                <h2>ProMeet Hall</h2>
                 <p>A sleek, modern meeting space equipped with advanced audio-visual technology, including a high-quality projector </p>
                 <div class="details">
                     <span>Room: 6</span>
                     <span>Bathrooms: 3.5</span>
                     <span>Beedrooms: 3</span>
                     <span>Carolina, USA</span>
-                    <span><b>$70,000</b></span>
-                    <button>See more</button>
+                    <div class="bottom-details">
+                        <span><b>$70,000</b></span>
+                        <button>See more</button>
+                    </div>      
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
+<partial name="_Ufooter" />

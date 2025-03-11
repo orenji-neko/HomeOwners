@@ -1,7 +1,31 @@
-﻿@{
-	ViewData["Title"] = "Sign-Up";
-}
+﻿<link rel="stylesheet" href="~/css/signup.css">
 
-<partial name="_Unavbar" />
-
-<p>Sign Up Here</p>
+<div class="image-container">
+    <form>
+        <h1>Sign Up</h1>
+        <div class="input-row">
+            <input type="text" placeholder="First Name" required />
+            <input type="text" placeholder="Mid Initial" required />
+            <input type="text" placeholder="Last Name" required />
+        </div>
+        <div class="input-row">
+            <input type="email" placeholder="Email Address" required />
+            <input type="tel" placeholder="Phone Number" required />
+        </div>
+        <input type="text" placeholder="Address" required />
+        <div class="input-row">
+            <input type="password" placeholder="Password" required />
+            <input type="password" placeholder="Confirm Password" required />
+        </div>
+        <div class="checkbox-row">
+            <input type="checkbox" required />
+            <label for="terms">I have read and agreed to the <b>Terms & Conditions</b></label>
+        </div>
+        <input class="login" type="submit" value="Sign Up" />
+        <span>Already have an account? <b><u><a href="URL_TO_SIGNIN_PAGE" style="color: white;">Login here</a></u></b></span>
+    </form>
+    <img src="~/image/logo.png" alt="Logo" class="logo">
+    <div class="background-wrapper">
+        <img src="~/image/back2.png" alt="Background Image" class="background-image">
+    </div>
+</div>
