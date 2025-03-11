@@ -1,0 +1,36 @@
+﻿<nav class="navbar navbar-expand-lg" style="background-color: #222222; padding-left: 20px; padding-right: 20px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "UHome" ? "active" : "")" asp-controller="Home" asp-action="UHome">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "UReservation" ? "active" : "")" asp-controller="Home" asp-action="UReservation">RESERVATION</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "UBilling" ? "active" : "")" asp-controller="Home" asp-action="UBilling">BILLING</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "UCommunity" ? "active" : "")" asp-controller="Home" asp-action="UCommunity">COMMUNITY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link @(ViewContext.RouteData.Values["action"].ToString() == "UForum" ? "active" : "")" asp-controller="Home" asp-action="UForum">FORUM</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto d-flex align-items-center">
+            <li class="nav-item">
+                <img src="~/image/avatar.png" alt="Avatar" style="width: 30px; height: 30px; border-radius: 20%;">
+            </li>
+            <li class="nav-item d-flex flex-column text-left" style="font-size: 14px; margin-left: 10px;">
+                <span style="color: white; font-family: 'Marvel', sans-serif;">Elizabeth Taylor</span>
+                <small style="color: #656565; font-family: 'Marvel', sans-serif;">User</small>
+            </li>
+            <li class="nav-item">
+                <img src="~/image/bell.png" alt="Notification" style="width: 30px; height: 30px; margin-left: 10px;">
+            </li>
+        </ul>
+    </div>
+</nav>

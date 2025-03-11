@@ -28,6 +28,28 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult UHome()
+    {
+        return View();
+    }
+    public IActionResult UBilling()
+    {
+        return View();
+    }
+    public IActionResult UCommunity()
+    {
+        return View();
+    }
+    public IActionResult UForum()
+    {
+        return View();
+    }
+    public IActionResult UReservation()
+    {
+        return View();
+    }
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
