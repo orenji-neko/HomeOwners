@@ -18,16 +18,6 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult SignIn()
-    {
-        return View();
-    }
-
-    public IActionResult SignUp()
-    {
-        return View();
-    }
-
     public IActionResult UHome()
     {
         return View();

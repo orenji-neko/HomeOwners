@@ -1,0 +1,35 @@
+﻿@model HomeOwners.Models.Authentication.SignUpModel;
+@{
+    ViewData["Title"] = "Sign-Up";
+}
+<link rel="stylesheet" href="~/css/signup.css">
+
+<div class="image-container">
+    <form method="post">
+        <h1>Sign Up</h1>
+        <div class="input-row">
+            <input type="text" asp-for="FirstName" placeholder="First Name" required />
+            <input type="text" asp-for="MidInital" placeholder="Mid Initial" required />
+            <input type="text" asp-for="LastName" placeholder="Last Name" required />
+        </div>
+        <div class="input-row">
+            <input type="email" asp-for="Email" placeholder="Email Address" required />
+            <input type="tel" asp-for="Phone" placeholder="Phone Number" required />
+        </div>
+        <input type="text" asp-for="Address" placeholder="Address" required />
+        <div class="input-row">
+            <input type="password" asp-for="Password" placeholder="Password" required />
+            <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" required />
+        </div>
+        <div class="checkbox-row">
+            <input type="checkbox" required />
+            <label for="terms">I have read and agreed to the <b>Terms & Conditions</b></label>
+        </div>
+        <input class="login" type="submit" value="Sign Up" />
+        <span>Already have an account? <b><u><a href="URL_TO_SIGNIN_PAGE" style="color: white;">Login here</a></u></b></span>
+    </form>
+    <img src="~/image/logo.png" alt="Logo" class="logo">
+    <div class="background-wrapper">
+        <img src="~/image/back2.png" alt="Background Image" class="background-image">
+    </div>
+</div>
