@@ -1,0 +1,124 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    position: absolute;
+    top: 210px;
+    left: 650px;
+    width: 410px;
+    height: auto;
+}
+
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    filter: brightness(1.1);
+}
+
+.image-container {
+    width: 100%;
+    height: 100vh;
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: left; /* Center the form horizontally */
+    align-items: center; /* Center the form vertically */
+}
+
+.background-image {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+form {
+    width: 50%; /* Adjust width as needed to create more space */
+    max-width: 600px; /* Set a maximum width */
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure form uses full height */
+}
+
+.input-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    gap: 15px; /* Add gap between input fields */
+}
+
+input {
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    flex: 1; /* Allow inputs to grow and shrink */
+    padding: 8px; /* Make the inputs smaller */
+    margin: 10px 0;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+    input[type="email"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="password"] {
+        background-image: none; /* Remove background image */
+        width: 100%; /* Use the full available width */
+    }
+
+::placeholder {
+    color: white;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    color: white;
+    margin-left: -68px;
+    margin-bottom: -20px;
+}
+
+    .checkbox-row input {
+        width: auto;
+        margin-right: 10px;
+    }
+
+.login {
+    border: none;
+    background-color: #206400;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: bold;
+    margin-top: 30px;
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-left: -310px;
+}
+
+span {
+    font-family: 'PT Sans Narrow', sans-serif;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: -181px;
+}

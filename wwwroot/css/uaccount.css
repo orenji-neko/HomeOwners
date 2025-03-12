@@ -1,0 +1,134 @@
+﻿html, body {
+    margin: 0;
+    height: 150vh; /* Increase the height of the page */
+}
+
+.account {
+    width: 100%;
+    height: 110vh; /* Adjust the height of the account container */
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.container {
+    width: 50%;
+    background-color: white;
+
+}
+
+form {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.inputs {
+    padding: 30px;
+}
+
+.top-content {
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    box-sizing: border-box;
+    height: 150px;
+    font-weight: bold;
+}
+
+    .top-content h1 {
+        color: #206400;
+        font-weight: bold;
+        font-size: 27px;
+    }
+
+.container2 {
+    padding: 23px;
+}
+
+.input-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    gap: 15px;
+}
+
+input {
+    width: 100%; /* Ensures padding and border are included in the width */
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px; /* This ensures both left and right sides have a border radius */
+    color: black;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+label {
+    margin-bottom: 5px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    color: black;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px; /* Use gap to add space between buttons */
+    margin-top: 20px;
+}
+
+.cancel, .save {
+    width: 100%;
+}
+
+.save {
+    background-color: #206400;
+    color: white;
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 600;
+}
+
+.avatar-wrapper {
+    display: flex;
+    margin-left: 30px;
+    position: relative;
+    top: -50px; /* Adjust this value to control the overlap */
+    margin-bottom: -75px; /* Adjust this value to control the overlap */
+}
+
+.avatar-overlay {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid white; /* Optional: Add a border to the avatar */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    color: white;
+    font-size: 14px;
+    font-family: 'PT Sans Narrow', sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.avatar-overlay:hover .overlay-text {
+    opacity: 1; /* Show overlay text on hover */
+}

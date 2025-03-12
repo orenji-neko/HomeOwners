@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+}
+
+.avatar-icon, .notification-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 20%;
+}
+
+.sign-in {
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    width: 78px;
+    font-weight: 500; 
+    height: 30px; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.sign-in:hover {
+    color: white; 
+}
+
+.sign-in:active, .sign-in:focus {
+    outline: none;
+    box-shadow: none; 
+}
+
+.sign-up {
+    background-color: white;
+    border: none;
+    color: black;
+    width: 83px;
+    border-radius: 5%;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; 
+    height: 30px; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+    .sign-up:hover {
+        background-color: white; 
+        color: black; 
+    }
+
+    .sign-up:active, .sign-up:focus {
+        outline: none;
+        box-shadow: none; 
+    }
+
+.navbar-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

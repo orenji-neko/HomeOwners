@@ -1,7 +1,15 @@
-﻿@{
-	ViewData["Title"] = "Sign-In";
-}
+﻿<link rel="stylesheet" href="~/css/signin.css">
 
-<partial name="_Unavbar" />
-
-<p>Sign In Here</p>
+<div class="image-container">
+    <form>
+        <h1>Login</h1>
+        <input type="text" placeholder="Username" required />
+        <input type="password" placeholder="Password" required />
+        <input class="login" type="submit" value="LOGIN" />
+        <span>Don't have an account? <b><u>Sign Up</u></b></span>
+    </form>
+    <img src="~/image/logo.png" alt="Logo" class="logo">
+    <div class="background-wrapper">
+        <img src="~/image/back2.png" alt="Background Image" class="background-image">
+    </div>
+</div>

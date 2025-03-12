@@ -1,0 +1,22 @@
+﻿<link rel="stylesheet" href="~/css/lnavbar.css">
+
+<nav class="navbar navbar-expand-lg" style="background-color: #222222; padding-left: 20px; padding-right: 20px;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto d-flex align-items-center justify-content-end">
+            <li class="nav-item">
+                <img src="~/image/user_icon.png" alt="Avatar" class="avatar-icon">
+            </li>
+            <li class="nav-item d-flex align-items-center" style="font-size: 14px; margin-left: 10px;">
+                <a class="btn sign-in" asp-controller="Home" asp-action="SignIn">Sign in</a>
+                <a class="btn sign-up" asp-controller="Home" asp-action="SignUp">Sign up</a>
+            </li>
+            <li class="nav-item">
+                <img src="~/image/bell.png" alt="Notification" class="notification-icon">
+            </li>
+        </ul>
+    </div>
+</nav>
+
