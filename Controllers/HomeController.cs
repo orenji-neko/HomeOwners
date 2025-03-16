@@ -9,54 +9,15 @@ namespace HomeOwners.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserManager<UserModel> _userManager;
 
-    public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager)
+    public HomeController(ILogger<HomeController> logger, UserManager<UserModel> userManager)
     {
         _logger = logger;
         _userManager = userManager;
     }
 
     public IActionResult Index()
-    {
-        return View();
-    }
-
-    [Authorize]
-    public async Task<IActionResult> UHome()
-    {
-        var currentUser = await _userManager.GetUserAsync(User);
-        ViewData["FirstName"] = currentUser?.FirstName;
-
-        return View();
-    }
-
-    [Authorize]
-    public IActionResult UBilling()
-    {
-        return View();
-    }
-
-    [Authorize]
-    public IActionResult UCommunity()
-    {
-        return View();
-    }
-
-    [Authorize]
-    public IActionResult UForum()
-    {
-        return View();
-    }
-
-    [Authorize]
-    public IActionResult UReservation()
-    {
-        return View();
-    }
-
-    [Authorize]
-    public IActionResult UAccount()
     {
         return View();
     }

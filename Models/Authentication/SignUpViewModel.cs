@@ -2,7 +2,7 @@
 
 namespace HomeOwners.Models.Authentication
 {
-    public class SignUpModel
+    public class SignUpViewModel
     {
         [Required]
         [EmailAddress]

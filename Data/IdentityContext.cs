@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeOwners.Data
 {
-    public class IdentityContext : IdentityDbContext<ApplicationUser>
+    public class IdentityContext : IdentityDbContext<UserModel>
     {
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options) { }
 

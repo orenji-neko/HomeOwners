@@ -1,0 +1,39 @@
+﻿@{
+	ViewData["Title"] = "Billing";
+}
+
+<div class="container-fluid p-4">
+	<div class="card">
+		<div class="card-body">
+			<h2 class="card-title">Billing</h2>
+			<p class="card-subtitle">List of your current bills.</p>
+			<div class="card-text overflow-scroll">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Type</th>
+							<th scope="col">Date</th>
+							<th scope="col">Price</th>
+							<th scope="col">Status</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Mirror House Sud</td>
+							<td>2/19/25</td>
+							<td>$10,000</td>
+							<td>
+								<span class="badge bg-warning">Unpaid</span>
+							</td>
+							<td>
+								<button class="btn btn-primary">Pay</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
