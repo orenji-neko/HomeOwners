@@ -16,7 +16,7 @@ builder.Services.AddDbContext<IdentityContext>(options =>
 );
 
 // Register Identity services – note we use ApplicationUser and IdentityRole
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+builder.Services.AddIdentity<UserModel, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
 })
@@ -25,7 +25,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 // Configuration
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.LoginPath = "/Account/SignIn";
+    options.LoginPath = "/Account/Login";
 });
 
 var app = builder.Build();

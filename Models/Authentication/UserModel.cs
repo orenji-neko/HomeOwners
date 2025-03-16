@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HomeOwners.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class UserModel : IdentityUser
     {
         [Required]
         public string FirstName { get; set; }

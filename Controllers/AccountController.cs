@@ -8,12 +8,12 @@ namespace HomeOwners.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<UserModel> _userManager;
+        private readonly SignInManager<UserModel> _signInManager;
 
         public AccountController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            UserManager<UserModel> userManager,
+            SignInManager<UserModel> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -22,7 +22,7 @@ namespace HomeOwners.Controllers
         // GET: /Account/SignIn
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult SignIn()
+        public IActionResult Login()
         {
             return View();
         }
@@ -30,7 +30,7 @@ namespace HomeOwners.Controllers
         // POST: /Account/SignIn
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> SignIn(SignInModel model)
+        public async Task<IActionResult> Login(SignInViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -39,7 +39,7 @@ namespace HomeOwners.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("UHome", "Home");
+                    return RedirectToAction("Home", "User");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -50,7 +50,7 @@ namespace HomeOwners.Controllers
         // GET: /Account/SignUp
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult SignUp()
+        public IActionResult Register()
         {
             return View();
         }
@@ -58,11 +58,11 @@ namespace HomeOwners.Controllers
         // POST: /Account/SignUp
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> SignUp(SignUpModel model)
+        public async Task<IActionResult> Register(SignUpViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
+                var user = new UserModel
                 {
                     UserName = model.Email,
                     Email = model.Email,

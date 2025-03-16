@@ -4,24 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LendSpace</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/unavbar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/app.css" />
+    <link rel="stylesheet" href="~/tailwind.css" />
 </head>
 <body>
-    @if (ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Index")
-    {
-        <!-- Render the landing page navbar for the landing page -->
-    <partial name="_LandingNavbar" />
-    }
-    else
-    {
- <!-- Render the default navbar for other pages -->
-    <partial name="_Unavbar" />
-    }
-
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+    <div class="flex flex-col w-screen h-screen">
+        <nav>
+            <!-- User Navbar -->
+            <partial name="_LandingNavbar" />
+        </nav>
+        <main role="main" class="w-full h-full">
+            @RenderBody()
+        </main>
+    </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

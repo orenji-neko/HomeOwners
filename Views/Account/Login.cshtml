@@ -1,0 +1,36 @@
+﻿@model HomeOwners.Models.Authentication.SignInViewModel
+@{
+    ViewData["Title"] = "Sign-In";
+}
+
+<div class="h-full w-full bg-gray-100 flex flex-row justify-center items-center">
+    <div class="sm:w-full md:w-[300px]">
+        <form method="post" class="flex flex-col gap-4">
+            <div class="flex flex-col">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="border-b-2"/>
+                <span asp-validation-for="Email"></span>
+            </div>
+
+            <div class="flex flex-col">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" class="border-b-2" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="flex flex-row gap-x-2">
+                <input asp-for="RememberMe" type="checkbox"/>
+                <label asp-for="RememberMe">
+                    @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+            <div class="">
+                <button type="submit" class="w-full bg-green-400 text-white py-2 rounded">Sign-In</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
