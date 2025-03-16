@@ -1,16 +1,20 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using HomeOwners.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeOwners.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager)
     {
         _logger = logger;
+        _userManager = userManager;
     }
 
     public IActionResult Index()
@@ -18,10 +22,15 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult UHome()
+    [Authorize]
+    public async Task<IActionResult> UHome()
     {
+        var currentUser = await _userManager.GetUserAsync(User);
+        ViewData["FirstName"] = currentUser?.FirstName;
+
         return View();
     }
+
     public IActionResult UBilling()
     {
         return View();

@@ -1,5 +1,6 @@
 using HomeOwners.Data;
 using HomeOwners.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -17,11 +18,15 @@ builder.Services.AddDbContext<IdentityContext>(options =>
 // Register Identity services – note we use ApplicationUser and IdentityRole
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-    // Configure options if needed (password requirements, sign-in options, etc.)
-    options.SignIn.RequireConfirmedAccount = false; // set to true if you plan to confirm emails
+    options.SignIn.RequireConfirmedAccount = false;
 })
-.AddEntityFrameworkStores<IdentityContext>()
-.AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<IdentityContext>()
+    .AddDefaultTokenProviders();
+// Configuration
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/SignIn";
+});
 
 var app = builder.Build();
 

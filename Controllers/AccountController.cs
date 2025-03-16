@@ -39,7 +39,7 @@ namespace HomeOwners.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("UHome", "Home");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
