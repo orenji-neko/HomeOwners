@@ -3,55 +3,92 @@
     ViewData["Title"] = "Sign-Up";
 }
 
-<link rel="stylesheet" href="~/css/signup.css" />
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h2>Create Your Account</h2>
+                </div>
+                <div class="card-body">
+                    <form asp-action="SignUp" method="post">
+                        <!-- Name Fields -->
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label asp-for="FirstName" class="form-label"></label>
+                                <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="MidInitial" class="form-label"></label>
+                                <input asp-for="MidInitial" class="form-control" placeholder="Mid Initial" />
+                                <span asp-validation-for="MidInitial" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <label asp-for="LastName" class="form-label"></label>
+                                <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
 
-<div class="image-container">
-    <form method="post">
-        <h1>Sign Up</h1>
+                        <!-- Contact Fields -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="Email" class="form-label"></label>
+                                <input asp-for="Email" class="form-control" placeholder="Email Address" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Phone" class="form-label"></label>
+                                <input asp-for="Phone" class="form-control" placeholder="Phone Number" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
 
-        <!-- Display summary of validation errors -->
-        <div asp-validation-summary="All" class="text-danger"></div>
+                        <!-- Address Field -->
+                        <div class="mb-3">
+                            <label asp-for="Address" class="form-label"></label>
+                            <input asp-for="Address" class="form-control" placeholder="Address" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
 
-        <div class="input-row">
-            <input type="text" asp-for="FirstName" placeholder="First Name" required />
-            <input type="text" asp-for="MidInitial" placeholder="Mid Initial" required />
-            <input type="text" asp-for="LastName" placeholder="Last Name" required />
+                        <!-- Password Fields -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="Password" class="form-label"></label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="ConfirmPassword" class="form-label"></label>
+                                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="terms" required />
+                            <label class="form-check-label" for="terms">
+                                I have read and agreed to the <strong>Terms &amp; Conditions</strong>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mb-3">
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer text-center">
+                    <span>
+                        Already have an account?
+                        <a asp-controller="Account" asp-action="SignIn" class="fw-bold text-primary">Login here</a>
+                    </span>
+                </div>
+            </div>
         </div>
-
-        <div class="input-row">
-            <input type="email" asp-for="Email" placeholder="Email Address" required />
-            <input type="tel" asp-for="Phone" placeholder="Phone Number" required />
-        </div>
-
-        <input type="text" asp-for="Address" placeholder="Address" required />
-
-        <div class="input-row">
-            <input type="password" asp-for="Password" placeholder="Password" required />
-            <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" required />
-        </div>
-
-        <div class="checkbox-row">
-            <input type="checkbox" id="terms" required />
-            <label for="terms">
-                I have read and agreed to the <b>Terms &amp; Conditions</b>
-            </label>
-        </div>
-
-        <input class="login" type="submit" value="Sign Up" />
-
-        <span>
-            Already have an account? <b>
-                <u>
-                    <a href="URL_TO_SIGNIN_PAGE" style="color: white;">Login here</a>
-                </u>
-            </b>
-        </span>
-    </form>
-
-    <img src="~/image/logo.png" alt="Logo" class="logo" />
-
-    <div class="background-wrapper">
-        <img src="~/image/back2.png" alt="Background Image" class="background-image" />
     </div>
 </div>
 

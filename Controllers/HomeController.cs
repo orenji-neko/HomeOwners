@@ -31,23 +31,31 @@ public class HomeController : Controller
         return View();
     }
 
+    [Authorize]
     public IActionResult UBilling()
     {
         return View();
     }
+
+    [Authorize]
     public IActionResult UCommunity()
     {
         return View();
     }
+
+    [Authorize]
     public IActionResult UForum()
     {
         return View();
     }
+
+    [Authorize]
     public IActionResult UReservation()
     {
         return View();
     }
 
+    [Authorize]
     public IActionResult UAccount()
     {
         return View();
