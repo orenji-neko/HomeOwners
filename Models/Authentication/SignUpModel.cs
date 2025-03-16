@@ -6,23 +6,32 @@ namespace HomeOwners.Models.Authentication
     {
         [Required]
         [EmailAddress]
-        public required string Email { get; set; }
+        public string Email { get; set; }
+
         [Required]
         [DataType(DataType.Password)]
-        public required string Password { get; set; }
+        public string Password { get; set; }
+
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
-        [Compare("Password", ErrorMessage = "Password and confirmation password not match.")]
-        public required string ConfirmPassword { get; set; }
+        [Compare("Password", ErrorMessage = "Password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
         [Required]
-        public required string FirstName { get; set; }
+        public string FirstName { get; set; }
+
         [Required]
-        public required string LastName { get; set; }
+        public string LastName { get; set; }
+
         [Required]
-        public required string MidInital { get; set; }
+        [Display(Name = "Middle Initial")]
+        public string MidInitial { get; set; }
+
         [Required]
-        public required string Address { get; set; }
+        public string Address { get; set; }
+
         [Required]
-        public required string Phone { get; set; }
+        [Phone]
+        public string Phone { get; set; }
     }
 }
