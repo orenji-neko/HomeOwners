@@ -8,15 +8,18 @@ namespace HomeOwners.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<UserModel> _userManager;
-        private readonly SignInManager<UserModel> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccountController(
-            UserManager<UserModel> userManager,
-            SignInManager<UserModel> signInManager)
+            UserManager<User> userManager,
+            SignInManager<User> signInManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         // GET: /Account/SignIn
@@ -39,6 +42,7 @@ namespace HomeOwners.Controllers
 
                 if (result.Succeeded)
                 {
+                    // Redirect to /User/Home
                     return RedirectToAction("Home", "User");
                 }
 
@@ -62,7 +66,8 @@ namespace HomeOwners.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new UserModel
+                Console.WriteLine("Is Valid");
+                var user = new User
                 {
                     UserName = model.Email,
                     Email = model.Email,
@@ -76,6 +81,8 @@ namespace HomeOwners.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Add User Role
+                    await _userManager.AddToRoleAsync(user, "User");
                     // Automatically sign in the new user
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");

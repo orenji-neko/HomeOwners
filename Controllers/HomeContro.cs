@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using HomeOwners.Models;
+using HomeOwners.Models.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 
@@ -9,9 +10,9 @@ namespace HomeOwners.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly UserManager<UserModel> _userManager;
+    private readonly UserManager<User> _userManager;
 
-    public HomeController(ILogger<HomeController> logger, UserManager<UserModel> userManager)
+    public HomeController(ILogger<HomeController> logger, UserManager<User> userManager)
     {
         _logger = logger;
         _userManager = userManager;

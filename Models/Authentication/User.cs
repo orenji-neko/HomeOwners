@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
-namespace HomeOwners.Models
+namespace HomeOwners.Models.Authentication
 {
-    public class UserModel : IdentityUser
+    public class User : IdentityUser
     {
         [Required]
         public string FirstName { get; set; }

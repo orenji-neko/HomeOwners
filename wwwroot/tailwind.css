@@ -6,8 +6,6 @@
     'Noto Color Emoji';
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
-    --color-red-100: oklch(0.936 0.032 17.717);
-    --color-green-300: oklch(0.871 0.15 154.449);
     --color-green-400: oklch(0.792 0.209 151.711);
     --color-gray-100: oklch(0.967 0.003 264.542);
     --color-black: #000;
@@ -302,9 +300,6 @@
   .m-5 {
     margin: calc(var(--spacing) * 5);
   }
-  .m-7 {
-    margin: calc(var(--spacing) * 7);
-  }
   .m-auto {
     margin: auto;
   }
@@ -476,9 +471,6 @@
   .table-row {
     display: table-row;
   }
-  .h-4 {
-    height: calc(var(--spacing) * 4);
-  }
   .h-25 {
     height: calc(var(--spacing) * 25);
   }
@@ -491,12 +483,6 @@
   .h-100 {
     height: calc(var(--spacing) * 100);
   }
-  .h-\[100px\] {
-    height: 100px;
-  }
-  .h-\[1000px\] {
-    height: 1000px;
-  }
   .h-auto {
     height: auto;
   }
@@ -505,9 +491,6 @@
   }
   .h-screen {
     height: 100vh;
-  }
-  .w-4 {
-    width: calc(var(--spacing) * 4);
   }
   .w-25 {
     width: calc(var(--spacing) * 25);
@@ -521,9 +504,6 @@
   .w-100 {
     width: calc(var(--spacing) * 100);
   }
-  .w-\[300px\] {
-    width: 300px;
-  }
   .w-auto {
     width: auto;
   }
@@ -535,12 +515,6 @@
   }
   .flex-1 {
     flex: 1;
-  }
-  .flex-2 {
-    flex: 2;
-  }
-  .flex-2\/3 {
-    flex: calc(2/3 * 100%);
   }
   .flex-shrink {
     flex-shrink: 1;
@@ -690,14 +664,8 @@
   .bg-gray-100 {
     background-color: var(--color-gray-100);
   }
-  .bg-green-300 {
-    background-color: var(--color-green-300);
-  }
   .bg-green-400 {
     background-color: var(--color-green-400);
-  }
-  .bg-red-100 {
-    background-color: var(--color-red-100);
   }
   .bg-transparent {
     background-color: transparent;
@@ -722,12 +690,6 @@
   }
   .p-5 {
     padding: calc(var(--spacing) * 5);
-  }
-  .p-8 {
-    padding: calc(var(--spacing) * 8);
-  }
-  .p-16 {
-    padding: calc(var(--spacing) * 16);
   }
   .px-0 {
     padding-inline: calc(var(--spacing) * 0);
@@ -955,10 +917,6 @@
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
-  .backdrop-filter {
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-  }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -971,11 +929,6 @@
   .ease-out {
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
-  }
-  .sm\:w-\[300px\] {
-    @media (width >= 40rem) {
-      width: 300px;
-    }
   }
   .sm\:w-full {
     @media (width >= 40rem) {
@@ -1115,42 +1068,6 @@
   inherits: false;
 }
 @property --tw-drop-shadow {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-blur {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-brightness {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-contrast {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-grayscale {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-hue-rotate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-invert {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-opacity {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-saturate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-backdrop-sepia {
   syntax: "*";
   inherits: false;
 }
