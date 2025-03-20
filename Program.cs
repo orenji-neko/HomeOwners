@@ -1,5 +1,6 @@
 using HomeOwners.Data;
 using HomeOwners.Models;
+using HomeOwners.Models.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,19 +17,44 @@ builder.Services.AddDbContext<IdentityContext>(options =>
 );
 
 // Register Identity services – note we use ApplicationUser and IdentityRole
-builder.Services.AddIdentity<UserModel, IdentityRole>(options =>
+builder.Services.AddIdentity<User, IdentityRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
 })
     .AddEntityFrameworkStores<IdentityContext>()
-    .AddDefaultTokenProviders();
+    .AddRoles<IdentityRole>();
+
+// Policies
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
+});
+
 // Configuration
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Account/Login";
 });
 
+// App Instance
 var app = builder.Build();
+
+
+// role seeding
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles = new[] { "Admin", "User" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -40,8 +66,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
-// Add Authentication and Authorization middlewares
 app.UseAuthentication();
 app.UseAuthorization();
 
