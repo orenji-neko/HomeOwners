@@ -8,115 +8,146 @@
 
 
 <!-- Hero Section -->
-<div class="hero-section">
-    <img src="~/image/image.png" alt="Background Image" class="hero-image">
-    <div class="hero-overlay">
-        <img src="~/image/logo.png" alt="LendSpace Logo" class="logo">
-        <h2>YOUR HOME, YOUR <span class="highlight">STORY</span></h2>
-        <p>From seamless facility reservations to booking the perfect home, we’re here to make every chapter of your story unforgettable.</p>
-        <a href="#" class="btn">Get Started</a>
+<div class="hero-section bg-gray-100 w-full">
+    <div class="flex w-full">
+        <img src="~/image/landing.png" alt="Facility Image 1" class="w-[2300px] h-150 my-10 flex mt-35">
+        <div class="hero-overlay my-10 mt-42">
+            <div class="text-5xl font-ptsans flex flex-col px-16 pt-17 text-justify">
+                <div>
+                    <p class="text-4xl scale-y-155 text-bold">YOUR HOME,</p>
+                    <span class="text-4xl scale-y-155">YOUR <span class="text-[#93D0A3] font-ptmono scale-y-155">STORY</span></span>
+                </div>
+            </div>
+            <div class="bg-white font-sans text-base px-16 py-8 text-justify">
+                <p>
+                From seamless facility reservations to booking the perfect home, we’re here to make every chapter of your story unforgettable.
+                </p>
+            </div>
+            <div class="mt-5 ml-9 p-5 pl-8 bg-gray-200 h-auto rounded-xl text-xs">
+                <div class="bg-green-200 h-50 w-63 py-1 px-7 ">
+                    <!-- Header -->
+                    <div class="flex justify-between items-center mb-4 mt-3">
+                        <div class="flex space-x-2">
+                        <button class="px-3 py-1 text-black  ">←</button>
+                        <h2 class="text-sm font-bold">September 2021</h2>
+                            <button class="px-3 py-1 text-black rounded-md  ">→</button>
+                        </div>
+                    </div>
+                    <!-- Days of the Week -->
+                    <div class="grid grid-cols-7 gap-1 text-center font-semibold mb-2">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <!-- Dates -->
+                    <div class="grid grid-cols-7 gap-1 text-center">
+                        <div class="text-gray-400">29</div>
+                        <div class="text-gray-400">30</div>
+                        <div>1</div>
+                        <div>2</div>
+                        <div>3</div>
+                        <div>4</div>
+                        <div>5</div>
+                        <div>6</div>
+                        <div>7</div>
+                        <div>8</div>
+                        <div>9</div>
+                        <div>10</div>
+                        <div>11</div>
+                        <div>12</div>
+                        <div>13</div>
+                        <div>14</div>
+                        <div>15</div>
+                        <div>16</div>
+                        <div class="bg-green-300 rounded-full p-1">19</div>
+                        <div>20</div>
+                        <div>21</div>
+                        <div>22</div>
+                        <div>23</div>
+                        <div>24</div>
+                        <div>25</div>
+                        <div>26</div>
+                        <div>27</div>
+                        <div>28</div>
+                        <div>29</div>
+                        <div>30</div>
+                        <div class="text-gray-400">1</div>
+                        <div class="text-gray-400">2</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
 </div>
 
+
 <!-- Facility Reservation Section -->
-<div class="facility">
+<div class="facility mb-20">
     <!-- First Row -->
     <div class="facility-row">
         <div class="facility-text">
-            <h2 class="facility-title">WANTED TO GET STARTED?</h2>
-            <p>
-                Our website offers a seamless platform to explore, compare, and secure your ideal property.
-                With expert guidance, tailored listings, and user-friendly tools, we make your property journey simple and successful.
-            </p>
+            <ul class="flex justify-end mt-10 mb-15 mr-16">
+                <li class="border bg-green-300 border-green-300 border-black rounded-full flex items-center justify-center text-center h-9 w-28 ml-5 text-white">
+                    <span>Hall</span>
+                </li>
+                <li class="border border-black rounded-full flex items-center justify-center text-center h-9 w-28 ml-5">
+                    <span>Pool</span>
+                </li>
+                <li class="border border-black rounded-full flex items-center justify-center text-center h-9 w-28 ml-5">
+                    <span>Court</span>
+                </li>
+            </ul>
         </div>
-        <div class="facility-image">
-            <img src="~/image/image.jpg" alt="Facility Image 1">
-        </div>
-    </div>
-
-    <!-- Second Row (Reversed) -->
-    <div class="facility-row reverse">
-        <div class="facility-image">
-            <div class="image-slider">
-                <button class="slider-btn left-btn">&#10094;</button>
-                <img src="~/image/image3.jpg" alt="Facility Image 2">
-                <button class="slider-btn right-btn">&#10095;</button>
-            </div>
-        </div>
-        <div class="facility-text">
-            <h2 class="facility-title">FACILITY RESERVATION</h2>
-            <p>
-                Simplify your planning with our Facility Reservation service. Easily book venues,
-                meeting spaces, or event halls tailored to your needs. Whether for business or pleasure,
-                we ensure a seamless reservation experience every time.
-            </p>
-            <a href="#" class="btn">VIEW</a>
+        <ul class="flex justify-center gap-7 mb-10 mx-17">
+            <li class="bg-white shadow-xl h-150 w-120 flex flex-col">
+                <img src="~/image/landing1.png" alt="Facility Image 1" class="w-full h-75">
+                <div class="px-15 pt-15 flex-grow">
+                    <p>A stunning, versatile event space with floor-to-ceiling windows, elegant decor, and state-of-the-art amenities.</p>
+                </div>
+                <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
+                    Book
+                </button>
+            </li>
+            <li class="bg-white shadow-xl h-150 w-120 flex flex-col">
+                <img src="~/image/landing2.png" alt="Facility Image 1" class="w-full h-75">
+                <div class="px-15 pt-15 flex-grow">
+                    <p>A quaint countryside cottage with a thatched roof, surrounded by lush gardens and rolling hills. Perfect for a cozy retreat.</p>
+                </div>
+                <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
+                    Book
+                </button>
+            </li>
+            <li class="bg-white shadow-xl h-150 w-120 flex flex-col">
+                <img src="~/image/landing3.png" alt="Facility Image 1" class="w-full h-75">
+                <div class="px-15 pt-15 flex-grow">
+                    <p>This charming property is nestled in the scenic Blue Ridge Mountains, offering a mix of modern amenities and rustic charm.</p>
+                </div>
+                <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
+                    Book
+                </button>
+            </li>
+        </ul>   
+        <div class="flex justify-center mt-8">
+            <div class="h-4 w-4 bg-green-300 rounded-full mx-2"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
         </div>
     </div>
 </div>
 
-
-
-<!-- Community Section -->
-<section class="community">
-    <div class="community-text">
-        <h2 class="community-title">HELLO, LENDSPACE COMMUNITY!</h2>
-        <p>
-            We’re excited to share the latest news, updates, and special announcements with you.
-            Whether it’s a new feature release, upcoming event, or important community notice,
-            this is your go-to spot for all things new and noteworthy. Stay tuned and stay connected!
-        </p>
-        <div class="community-buttons">
-            <a href="#" class="btn">FORUM</a>
-            <a href="#" class="btn">ANNOUNCEMENTS</a>
-        </div>
-    </div>
-    <div class="community-image">
-        <img src="~/image/12.png" alt="Community Image">
-    </div>
-</section>
+    <!-- Events  -->
+<div class="">
+    <img src="~/image/landing4.png" alt="Facility Image 2">       
+</div>
 
 
 
-<!-- About Us Section -->
-<section class="about-us">
-    <div class="about-container">
-        <!-- Centered About Button & Title -->
-        <div class="about-header">
-            <button class="about-btn">ABOUT US</button>
-            <h2>TELL YOU MORE ABOUT US!</h2>
-        </div>
-
-        <div class="about-content">
-            <!-- Left Side: Text Content -->
-            <div class="about-text">
-                <h3>About Us</h3>
-                <p>Welcome to the LendSpace Association! Our vibrant and friendly community is dedicated to creating a safe, beautiful, and enjoyable living environment for all our residents.</p>
-
-                <h3>Our Mission</h3>
-                <p>Our mission is to foster a sense of community and pride among homeowners by maintaining high standards for property upkeep, organizing engaging events, and providing essential services.</p>
-
-                <ul>
-                    <li>Community-driven: Regular social gatherings and activities for all ages.</li>
-                    <li>Maintenance & Services: Professional property management and security.</li>
-                    <li>Communication: Timely updates, newsletters, and an active online platform.</li>
-                </ul>
-
-                <p>Join us to make our community a better place! Get involved, stay informed, and contribute to a thriving neighborhood.</p>
-            </div>
-
-            <!-- Right Side: Image & Socials -->
-            <div class="about-media">
-                <div class="about-image">
-                    <img src="~/image/image15.png" alt="About Us">
-                </div>
-                <div class="about-us-socials">
-                    <i class="fab fa-facebook"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fas fa-envelope"></i> <!-- Gmail Icon -->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
