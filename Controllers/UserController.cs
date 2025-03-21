@@ -21,9 +21,7 @@ namespace HomeOwners.Controllers
         public async Task<IActionResult> Home()
         {
             var currentUser = await _userManager.GetUserAsync(User);
-            ViewData["FirstName"] = currentUser?.FirstName;
-
-            return View();
+            return View(currentUser);
         }
 
         [Authorize(Policy = "UserOnly")]

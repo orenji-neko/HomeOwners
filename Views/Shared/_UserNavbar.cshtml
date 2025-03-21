@@ -1,41 +1,51 @@
-﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-    <!-- Logo Here or Name -->
-    <a class="navbar-brand" style="padding: 4px;" href="#">@ViewData["Title"]</a>
-        
-    <!-- Collapse plugin -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+﻿@model User
 
-    <!-- Links -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Home" ? "active" : "")" asp-controller="User" asp-action="Home">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Reservation" ? "active" : "")" asp-controller="User" asp-action="Reservation">RESERVATION</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Billing" ? "active" : "")" asp-controller="User" asp-action="Billing">BILLING</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Community" ? "active" : "")" asp-controller="User" asp-action="Community">COMMUNITY</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @(ViewContext.RouteData.Values["action"]?.ToString() == "Forum" ? "active" : "")" asp-controller="User" asp-action="Forum">FORUM</a>
-            </li>
-        </ul>
+<div class="bg-white h-full p-4 flex flex-row justify-between shadow-md">
+    <div class="flex-1">
+        <a href="#">LendSpace</a>
     </div>
-
-    <div class="d-none d-sm-none d-md-flex flex-row">
-        <div class="d-flex flex-column">
-            <span style="color: white; font-family: 'Marvel', sans-serif;">
-                @ViewData["FirstName"]
-            </span>
-            <small style="color: #656565; font-family: 'Marvel', sans-serif;">User</small>
-        </div>
-        <!-- Notifications -->
-        <img src="~/images/bell.png" alt="Notification" style="width: 30px; height: 30px;">
-    </div>
-</nav>
+    <ul class="flex-1 flex flex-row justify-between">
+        <li>
+            <a href="#" class="hover:border-b-2">
+                <span data-feather="home"></span>
+                DASHBOARD
+            </a>
+        </li>
+        <li>
+            <a href="#" class="hover:border-b-2">
+                <span data-feather="home"></span>
+                BILLING
+            </a>
+        </li>
+        <li>
+            <a href="#" class="hover:border-b-2">
+                <span data-feather="file"></span>
+                RESERVATION
+            </a>
+        </li>
+        <li>
+            <a href="#" class="hover:border-b-2">
+                <span data-feather="file"></span>
+                EVENTS
+            </a>
+        </li>
+        <li>
+            <a href="#" class="hover:border-b-2">
+                <span data-feather="file"></span>
+                ANNOUNCEMENTS
+            </a>
+        </li>
+        <li>
+            <a href="#" class="hover:border-b-2">
+                <span data-feather="file"></span>
+                FORUM
+            </a>
+        </li>
+        <li>
+            <a href="#" class="hover:border-b-2">
+                <span data-feather="file"></span>
+                @Model.FirstName
+            </a>
+        </li>
+    </ul>
+</div>
