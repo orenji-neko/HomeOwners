@@ -1,30 +1,27 @@
-﻿<div class="bg-white h-full p-4 flex flex-row justify-between shadow-md">
-    <div class="flex-1">
-        <a href="#">LendSpace</a>
+﻿<div class="bg-white h-24 p-2 flex items-center justify-between shadow-md fixed top-0 w-full z-50">
+    <!-- Logo Section -->
+    <div>
+        <img src="~/image/logo.png" alt="LendSpace Logo" class="logo w-auto h-20 ml-10">
     </div>
-    <ul class="flex flex-row justify-evenly flex-1">
-        <li>
-            <a href="#">
+    <!-- Navigation Links -->
+    <ul class="flex items-center justify-end mr-10">
+        <li class="ml-5">
+            <a href="#" class="flex items-center space-x-2 text-xs">
                 <span data-feather="home"></span>
-                EVENTS
+                <span>EVENTS</span>
             </a>
         </li>
-        <li>
-            <a href="#">
+        <li class="ml-5">
+            <a href="#" class="flex items-center space-x-2 text-xs">
                 <span data-feather="file"></span>
-                BOOK
+                <span>BOOK</span>
             </a>
         </li>
-        <li>
-            <a href="/Account/Login">
+        <li class="ml-5 border border-black rounded-full h-9 flex items-center justify-center">
+            <a href="/Account/Login" class="flex items-center text-black pr-3">
                 <span data-feather="file"></span>
-                LOGIN
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span data-feather="file"></span>
-                REGISTER
+                <img src="~/image/user.png" alt="User Icon" class="w-auto h-8 pl-2">
+                <span class="text-center text-sm p-3">Login</span>
             </a>
         </li>
     </ul>
