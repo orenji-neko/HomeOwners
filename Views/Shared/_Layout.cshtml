@@ -9,18 +9,21 @@
 </head>
 <body>
     <div class="flex flex-col w-screen h-screen">
-        <nav>
-            @if (User?.Identity?.IsAuthenticated ?? false)
-            {
-                <!-- User Navbar -->
-                <partial name="_UserNavbar" />
-            }
-            else
-            {
-                <!-- Landing Navbar -->
-                <partial name="_LandingNavbar" />
-            }
-        </nav>
+        @if (ViewData["Title"]?.ToString() != "Sign-In")
+        {
+            <nav>
+                @if (User?.Identity?.IsAuthenticated ?? false)
+                {
+                    <!-- User Navbar -->
+                    <partial name="_UserNavbar" />
+                }
+                else
+                {
+                    <!-- Landing Navbar -->
+                    <partial name="_LandingNavbar" />
+                }
+            </nav>
+        }
         <main role="main" class="w-full h-full">
             @RenderBody()
         </main>
