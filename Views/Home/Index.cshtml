@@ -5,7 +5,29 @@
 
 <link rel="stylesheet" href="~/css/sitelanding.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
 
+<style>
+    html {
+        scroll-behavior: smooth;
+        font-family: 'PT Sans Narrow', sans-serif;
+        overflow: hidden;
+    }
+
+    /* If you only want to hide the scrollbars but allow scrolling */
+    html {
+        scroll-behavior: smooth;
+        font-family: 'PT Sans Narrow', sans-serif;
+        overflow: auto;
+        scrollbar-width: none; /* For Firefox */
+    }
+
+    body::-webkit-scrollbar {
+        display: none; /* For Chrome, Safari, and Edge */
+    }
+
+
+</style>
 
 <!-- Hero Section -->
 <div class="hero-section bg-gray-100 w-full">
@@ -18,23 +40,21 @@
                     <span class="text-4xl scale-y-155">YOUR <span class="text-[#93D0A3] font-ptmono scale-y-155">STORY</span></span>
                 </div>
             </div>
-            <div class="bg-white font-sans text-base px-16 py-8 text-justify">
+            <div class="bg-white font-ptsans text-base px-16 py-8 text-justify">
                 <p>
-                From seamless facility reservations to booking the perfect home, we’re here to make every chapter of your story unforgettable.
+                    From seamless facility reservations to booking the perfect home, we’re here to make every chapter of your story unforgettable.
                 </p>
             </div>
-            <div class="mt-5 ml-9 p-5 pl-8 bg-gray-200 h-auto rounded-xl text-xs">
-                <div class="bg-green-200 h-50 w-63 py-1 px-7 ">
+            <div class="mt-5 ml-9 p-2 pl-8 bg-gray-200 h-auto rounded-xl text-xs">
+                <div class="bg-green-200 h-55 w-50 pl-7 pr-7  rounded-xl">
                     <!-- Header -->
-                    <div class="flex justify-between items-center mb-4 mt-3">
-                        <div class="flex space-x-2">
-                        <button class="px-3 py-1 text-black  ">←</button>
-                        <h2 class="text-sm font-bold">September 2021</h2>
-                            <button class="px-3 py-1 text-black rounded-md  ">→</button>
-                        </div>
+                    <div class="flex justify-center items-center text-center mb-4 ">
+                        <button class="px-1 py-1 text-black mt-4">←</button>
+                        <h2 class="text-sm font-bold mx-2  mt-4">September 2021</h2>
+                        <button class="px-1 py-1 text-black rounded-md  mt-4">→</button>
                     </div>
                     <!-- Days of the Week -->
-                    <div class="grid grid-cols-7 gap-1 text-center font-semibold mb-2">
+                    <div class="grid grid-cols-7 gap-4 text-center font-semibold mb-2">
                         <div>Sun</div>
                         <div>Mon</div>
                         <div>Tue</div>
@@ -44,7 +64,7 @@
                         <div>Sat</div>
                     </div>
                     <!-- Dates -->
-                    <div class="grid grid-cols-7 gap-1 text-center">
+                    <div class="grid grid-cols-7 gap-2 text-center">
                         <div class="text-gray-400">29</div>
                         <div class="text-gray-400">30</div>
                         <div>1</div>
@@ -80,11 +100,9 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>
-
 
 <!-- Facility Reservation Section -->
 <div class="facility mb-20">
@@ -103,51 +121,75 @@
                 </li>
             </ul>
         </div>
-        <ul class="flex justify-center gap-7 mb-10 mx-17">
-            <li class="bg-white shadow-xl h-150 w-120 flex flex-col">
-                <img src="~/image/landing1.png" alt="Facility Image 1" class="w-full h-75">
-                <div class="px-15 pt-15 flex-grow">
-                    <p>A stunning, versatile event space with floor-to-ceiling windows, elegant decor, and state-of-the-art amenities.</p>
+        <ul class="flex justify-center gap-7 mb-10 mx-10">
+            <li class="bg-white shadow-xl h-130 w-120 flex flex-col">
+                <img src="~/image/landing1.png" alt="Facility Image 1" class="w-full h-65">
+                <div class="px-10 pt-5 flex-grow">
+                    <h2 class="font-semibold pt-2 pb-5 text-lg">Grand Hall</h2>
+                    <p class="text-l text-justify"> A stunning, versatile event space with floor-to-ceiling windows, elegant decor, and state-of-the-art amenities.</p>
                 </div>
                 <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
                     Book
                 </button>
             </li>
-            <li class="bg-white shadow-xl h-150 w-120 flex flex-col">
-                <img src="~/image/landing2.png" alt="Facility Image 1" class="w-full h-75">
-                <div class="px-15 pt-15 flex-grow">
-                    <p>A quaint countryside cottage with a thatched roof, surrounded by lush gardens and rolling hills. Perfect for a cozy retreat.</p>
+            <li class="bg-white shadow-xl h-130 w-120 flex flex-col">
+                <img src="~/image/landing2.png" alt="Facility Image 1" class="w-full h-65">
+                <div class="px-10 pt-5 flex-grow">
+                    <h2 class="font-semibold pt-2 pb-5 text-lg">Office Hall</h2>
+                    <p class="text-l text-justify">A quaint countryside cottage with a thatched roof, surrounded by lush gardens and rolling hills. Perfect for a cozy retreat.</p>
                 </div>
                 <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
                     Book
                 </button>
             </li>
-            <li class="bg-white shadow-xl h-150 w-120 flex flex-col">
-                <img src="~/image/landing3.png" alt="Facility Image 1" class="w-full h-75">
-                <div class="px-15 pt-15 flex-grow">
-                    <p>This charming property is nestled in the scenic Blue Ridge Mountains, offering a mix of modern amenities and rustic charm.</p>
+            <li class="bg-white shadow-xl h-130 w-120 flex flex-col">
+                <img src="~/image/landing3.png" alt="Facility Image 1" class="w-full h-65">
+                <div class="px-10 pt-5 flex-grow">
+                    <h2 class="font-semibold pt-2 pb-5 text-lg">Swimming Pool</h2>
+                    <p class="text-l text-justify">This charming property is nestled in the scenic Blue Ridge Mountains, offering a mix of modern amenities and rustic charm.</p>
                 </div>
                 <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
                     Book
                 </button>
             </li>
-        </ul>   
-        <div class="flex justify-center mt-8">
-            <div class="h-4 w-4 bg-green-300 rounded-full mx-2"></div>
-            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
-            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
-            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
-            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
-            <div class="h-4 w-4 bg-gray-300 rounded-full mx-2"></div>
+        </ul>
+        <div class="flex justify-center mt-15">
+            <div class="h-4 w-4 bg-green-300 rounded-full mx-3"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
+            <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
         </div>
     </div>
 </div>
 
-    <!-- Events  -->
-<div class="">
-    <img src="~/image/landing4.png" alt="Facility Image 2">       
+<div class="bg-gray-100 py-20 flex justify-center items-center ">
+    <div class="flex">
+        <!-- Centered Whole Content -->
+        <div class="px-17 w-150">
+            <!-- Left Content -->
+            <h2 class="text-3xl font-bold relative after:content-[''] after:block after:mt-1 after:w-15 after:h-1 after:bg-green-500 after:absolute after:left-0">
+                <span class="ml-5">Events</span>
+            </h2>
+            <p class="text-l text-justify  pb-35 pt-20">
+                We're excited to share the latest news, updates, and special announcements with you.
+                Whether it's a new feature release, upcoming event, or important community notice,
+                this is your go-to spot for all things new and noteworthy. Stay tuned and stay connected!
+            </p>
+            <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-13 w-full text-white">
+                See More →
+            </button>
+        </div>
+        <div class="ml-auto text-justify bg-white shadow-md rounded-bl-2xl h-130">
+            <!-- Right Content -->
+            <img src="~/image/landing4.png" alt="Facility Image 2" class="w-[2100px] h-105 flex">
+            <div class="px-20 py-5">
+                <span class="text-l">
+                    Welcome to the LendSpace Association! Our vibrant and friendly community is dedicated to creating a safe,
+                    beautiful, and enjoyable living environment for all our residents.
+                </span>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
