@@ -1,0 +1,104 @@
+﻿@{
+	ViewData["Title"] = "Book";
+}
+
+<!-- Facility Reservation Section -->
+<div class="facility mt-13">
+    <!-- First Row -->
+    <div class="facility-row pt-10">
+        <div class="facility-text flex justify-between items-center ml-10">
+            <ul class="flex items-center justify-between">
+                <!-- Facility Options -->
+                <li class="border bg-green-300 rounded-full flex items-center justify-center text-center h-9 w-28 ml-5 text-white">
+                    <span>Hall</span>
+                </li>
+                <li class="border border-black rounded-full flex items-center justify-center text-center h-9 w-28 ml-5">
+                    <span>Pool</span>
+                </li>
+                <li class="border border-black rounded-full flex items-center justify-center text-center h-9 w-28 ml-5">
+                    <span>Court</span>
+                </li>
+                <!-- Search Bar -->
+                <li class="ml-5">
+                    <div class="flex items-center border border-black rounded-lg h-9 w-64 px-2">
+                        <span class="material-icons text-gray-500">search</span>
+                        <input type="search" class="flex-grow px-2 focus:outline-none" placeholder="Search facilities..." />
+                    </div>
+                </li>
+                <li class="pl-85">
+                    <a href="/User/Facility" class="border border-green-300 bg-green-300 text-white rounded-l h-10 w-40 flex items-center justify-center mx-auto">
+                        See More
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Search Input -->
+        </div>
+
+        <ul class="flex justify-center gap-10 mb-10 pt-5">
+            <li class="bg-white shadow-xl h-140 w-90 flex flex-col">
+                <img src="~/image/landing1.png" alt="Facility Image 1" class="w-full h-auto">
+                <div class="px-10 pt-5 flex-grow">
+                    <h2 class="font-semibold pt-2 pb-5 text-lg">Grand Hall</h2>
+                    <p class="text-l text-justify">A stunning, versatile event space with floor-to-ceiling windows, elegant decor, and state-of-the-art amenities.</p>
+                    <!-- Star Rating -->
+                    <div class="flex items-center gap-1 pt-2">
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-gray-400">star_outline</span>
+                    </div>
+                </div>
+                <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
+                    Book
+                </button>
+            </li>
+            <li class="bg-white shadow-xl h-140 w-90 flex flex-col">
+                <img src="~/image/landing2.png" alt="Facility Image 2" class="w-full h-auto">
+                <div class="px-10 pt-5 flex-grow">
+                    <h2 class="font-semibold pt-2 pb-5 text-lg">Office Hall</h2>
+                    <p class="text-l text-justify">A quaint countryside cottage with a thatched roof, surrounded by lush gardens and rolling hills. Perfect for a cozy retreat.</p>
+                    <!-- Star Rating -->
+                    <div class="flex items-center gap-1 pt-2">
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                    </div>
+                </div>
+                <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
+                    Book
+                </button>
+            </li>
+            <li class="bg-white shadow-xl h-140 w-90 flex flex-col">
+                <img src="~/image/landing3.png" alt="Facility Image 3" class="w-full h-auto">
+                <div class="px-10 pt-5 flex-grow">
+                    <h2 class="font-semibold pt-2 pb-5 text-lg">Swimming Pool</h2>
+                    <p class="text-l text-justify">This charming property is nestled in the scenic Blue Ridge Mountains, offering a mix of modern amenities and rustic charm.</p>
+                    <!-- Star Rating -->
+                    <div class="flex items-center gap-1 pt-2">
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star</span>
+                        <span class="material-icons text-yellow-500">star_outline</span>
+                        <span class="material-icons text-gray-400">star_outline</span>
+                    </div>
+                </div>
+                <button class="ml-auto mb-12 mr-12 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-9 w-40 text-white">
+                    Book
+                </button>
+            </li>
+        </ul>
+        
+        <div class="flex justify-center mt-8 pb-5">
+            <div class="h-3 w-3 bg-green-300 rounded-full mx-2"></div>
+            <div class="h-3 w-3 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-3 w-3 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-3 w-3 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-3 w-3 bg-gray-300 rounded-full mx-2"></div>
+            <div class="h-3 w-3 bg-gray-300 rounded-full mx-2"></div>
+        </div>
+    </div>
+</div>

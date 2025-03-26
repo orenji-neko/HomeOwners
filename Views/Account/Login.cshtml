@@ -10,49 +10,53 @@
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<div class="h-screen w-screen bg-cover bg-center" style="background-image: url('/image/landing.png');">
-    <!-- Overlay content -->
-    <div class="flex flex-col items-center justify-center h-full">
-        <!-- Login Form Section -->
-        <form method="post" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md h-auto relative">
-            <!-- Exit Icon -->
-            <div class="absolute top-4 right-4">
-                <a href="/">
-                    <i class="fa-black fa-solid fa-circle-xmark text-3xl transition"></i>
-                </a>
-            </div>
-
-            <!-- Logo -->
-            <div class="flex">
-                <img src="~/image/logo.png" alt="Logo" class="mb-6 w-55 h-auto">
-            </div>
-
-            <div class="px-10">
-                <div class="mb-4">
-                    <label asp-for="Email" class="block text-gray-700 font-medium mb-1">Email or username</label>
-                    <input asp-for="Email" class="border-b-2 focus:outline-none w-full py-1 px-1" />
-                    <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
+<!-- Add fade-in transition to the body -->
+<body>
+    <div class="h-screen w-screen bg-cover bg-center" style="background-image: url('/image/landing.png');">
+        <!-- Overlay content -->
+        <div class="flex flex-col items-center justify-center h-full">
+            <!-- Login Form Section -->
+            <form method="post" class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md h-auto relative">
+                <!-- Exit Icon -->
+                <div class="absolute top-4 right-4">
+                    <!-- Add an ID to the X icon for JavaScript targeting -->
+                    <a href="/" id="exit-button">
+                        <i class="fa-black fa-solid fa-circle-xmark text-3xl transition"></i>
+                    </a>
                 </div>
 
-                <div class="mb-4">
-                    <label asp-for="Password" class="block text-gray-700 font-medium mb-1">Password</label>
-                    <input asp-for="Password" type="password" class="border-b-2 focus:outline-none w-full py-1 px-1" />
-                    <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
+                <!-- Logo -->
+                <div class="flex">
+                    <img src="~/image/logo.png" alt="Logo" class="mb-6 w-55 h-auto">
                 </div>
 
-                <div class="flex items-center gap-2 mb-4">
-                    <input asp-for="RememberMe" type="checkbox" class="w-4 h-4" />
-                    <label asp-for="RememberMe" class="text-gray-700">Keep me logged in</label>
-                </div>
+                <div class="px-10">
+                    <div class="mb-4">
+                        <label asp-for="Email" class="block text-gray-700 font-medium mb-1">Email or username</label>
+                        <input asp-for="Email" class="border-b-2 focus:outline-none w-full py-1 px-1" />
+                        <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
+                    </div>
 
-                <div class="flex justify-between gap-2">
-                    <button type="button" class="border border-black hover:bg-gray-200 text-black py-2 px-4 rounded-lg transition w-full">CANCEL</button>
-                    <button type="submit" class="bg-green-200 hover:bg-green-300 text-white py-2 px-4 rounded-lg transition w-full">LOGIN</button>
+                    <div class="mb-4">
+                        <label asp-for="Password" class="block text-gray-700 font-medium mb-1">Password</label>
+                        <input asp-for="Password" type="password" class="border-b-2 focus:outline-none w-full py-1 px-1" />
+                        <span asp-validation-for="Password" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <div class="flex items-center gap-2 mb-4">
+                        <input asp-for="RememberMe" type="checkbox" class="w-4 h-4" />
+                        <label asp-for="RememberMe" class="text-gray-700">Keep me logged in</label>
+                    </div>
+
+                    <div class="flex justify-between gap-2">
+                        <button type="button" class="border border-black hover:bg-gray-200 text-black py-2 px-4 rounded-lg transition w-full">CANCEL</button>
+                        <button type="submit" class="bg-green-200 hover:bg-green-300 text-white py-2 px-4 rounded-lg transition w-full">LOGIN</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

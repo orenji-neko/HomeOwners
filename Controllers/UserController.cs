@@ -24,8 +24,8 @@ namespace HomeOwners.Controllers
             return View(currentUser);
         }
 
-        [Authorize(Policy = "UserOnly")]
-        public IActionResult Billing()
+        
+        public IActionResult Landing()
         {
             return View();
         }
@@ -42,14 +42,19 @@ namespace HomeOwners.Controllers
             return View();
         }
 
-        [Authorize(Policy = "UserOnly")]
+        
         public IActionResult Reservation()
         {
             return View();
         }
 
-        [Authorize(Policy = "UserOnly")]
-        public IActionResult Account()
+        
+        public IActionResult Book()
+        {
+            return View();
+        }
+
+        public IActionResult Facility()
         {
             return View();
         }
