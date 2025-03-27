@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="~/app.css" />
     <link rel="stylesheet" href="~/tailwind.css" />
 </head>
-<body>
+<!-- Add fade-in transition to the body -->
+<body class="opacity-0 transition-opacity duration-1000 ease-in-out">
     <div class="flex flex-col w-screen h-screen">
         @if (ViewData["Title"]?.ToString() != "Sign-In")
         {
             <nav>
-                @if (User?.Identity?.IsAuthenticated ?? false)
+                @if (Context.Request.Path.StartsWithSegments("/User"))
                 {
                     <!-- User Navbar -->
                     <partial name="_UserNavbar" />
@@ -29,9 +30,18 @@
         </main>
     </div>
 
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Fade-in effect on page load -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.remove('opacity-0');
+        });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
