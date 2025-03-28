@@ -77,15 +77,27 @@
                 </a>
                 
             </div>
-            <!-- User Icons -->
-            <div class="ml-10 flex items-center justify-center gap-2">
+            <!-- Settings Dropdown -->
+            <div class="ml-10 flex relative">
                 <span data-feather="file"></span>
                 <img src="~/image/user.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
                 <img src="~/image/landing5.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
-                <a href="/User/Setting">
-                    <span data-feather="file"></span>
-                    <img src="~/image/setting.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
-                </a>
+                <div class="dropdown">
+                    <button class="flex items-center cursor-pointer transition-transform duration-300 transform hover:rotate-180 hover:translate-x-2 hover:translate-y-[-1px]">
+                    <img src="~/image/setting.png" alt="Settings Icon" class="w-auto h-8 pl-2">
+                </button>
+
+                <!-- Dropdown Menu -->
+                <div class="ml-[-20px] mt-3 opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 bg-white shadow-md absolute mt-1 w-56 rounded-md">
+                    <a href="/User/Profile">
+                        <div class="px-4 py-2 cursor-pointer hover:bg-green-300">Edit Profile</div>
+                    </a>
+                    <a href="/User/Logout">
+                        <div class="px-4 py-2 cursor-pointer hover:bg-red-300 border border-none rounded-md">Logout</div>
+                    </a>
+                </div>
+                </div>
+                
             </div>
         </div>
     </div>
