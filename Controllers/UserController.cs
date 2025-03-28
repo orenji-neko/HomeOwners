@@ -65,5 +65,9 @@ namespace HomeOwners.Controllers
         {
             return View();
         }
+        public IActionResult Profile()
+        {
+            return View();
+        }
     }
 }
