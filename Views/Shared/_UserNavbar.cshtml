@@ -42,7 +42,7 @@
 
             <!-- Community Dropdown -->
             <div class="ml-10 relative dropdown">
-                <button class="flex items-center text-black pr-3 py-2 bg-white rounded-md cursor-pointer transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue">
+                <button class="flex items-center text-black pr-3 py-2 rounded-md cursor-pointer transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue">
                     <span>COMMUNITY</span>
                     <!-- Community Dropdown Icon with Animation -->
                     <svg class="w-5 h-5 ml-2 -mr-1 transition-transform duration-300 transform dropdown-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -50,9 +50,19 @@
                     </svg>
                 </button>
                 <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 bg-white shadow-md absolute mt-1 w-56 rounded-md">
-                    <div class="px-4 py-2 cursor-pointer hover:bg-green-300">Events</div>
-                    <div class="px-4 py-2 cursor-pointer hover:bg-green-300">Announcements</div>
-                    <div class="px-4 py-2 cursor-pointer hover:bg-green-300 border border-none rounded-md">Forums</div>
+                    
+                    <a href="/User/Event">
+                        <span data-feather="file"></span>
+                        <div class="px-4 py-2 cursor-pointer hover:bg-green-300">Events</div>
+                    </a>
+                    <a href="/User/Announcement">
+                        <span data-feather="file"></span>
+                        <div class="px-4 py-2 cursor-pointer hover:bg-green-300">Announcements</div>
+                    </a>
+                    <a href="/User/Forum">
+                        <span data-feather="file"></span>
+                        <div class="px-4 py-2 cursor-pointer hover:bg-green-300 border border-none rounded-md">Forums</div>
+                    </a>   
                 </div>
             </div>
 
@@ -61,15 +71,21 @@
 
             <!-- Billing -->
             <div class="ml-10 flex items-center text-black pr-3 cursor-pointer">
-                <span data-feather="file"></span>
-                <span>BILLING</span>
+                <a href="/User/Billing">
+                    <span data-feather="file"></span>
+                    <span>BILLING</span>
+                </a>
+                
             </div>
             <!-- User Icons -->
             <div class="ml-10 flex items-center justify-center gap-2">
                 <span data-feather="file"></span>
                 <img src="~/image/user.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
                 <img src="~/image/landing5.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
-                <img src="~/image/setting.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
+                <a href="/User/Setting">
+                    <span data-feather="file"></span>
+                    <img src="~/image/setting.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
+                </a>
             </div>
         </div>
     </div>

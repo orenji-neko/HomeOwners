@@ -29,19 +29,6 @@ namespace HomeOwners.Controllers
         {
             return View();
         }
-
-        [Authorize(Policy = "UserOnly")]
-        public IActionResult Community()
-        {
-            return View();
-        }
-
-        [Authorize(Policy = "UserOnly")]
-        public IActionResult Forum()
-        {
-            return View();
-        }
-
         
         public IActionResult Reservation()
         {
@@ -55,6 +42,26 @@ namespace HomeOwners.Controllers
         }
 
         public IActionResult Facility()
+        {
+            return View();
+        }
+        public IActionResult Event()
+        {
+            return View();
+        }
+        public IActionResult Announcement()
+        {
+            return View();
+        }
+        public IActionResult Forum()
+        {
+            return View();
+        }
+        public IActionResult Setting()
+        {
+            return View();
+        }
+        public IActionResult Billing()
         {
             return View();
         }
