@@ -5,7 +5,6 @@
     --font-sans: "PT Sans Narrow", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-500: oklch(0.637 0.237 25.331);
-    --color-yellow-500: oklch(0.795 0.184 86.047);
     --color-green-200: oklch(0.925 0.084 155.995);
     --color-green-300: oklch(0.871 0.15 154.449);
     --color-green-400: oklch(0.792 0.209 151.711);
@@ -247,14 +246,23 @@
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
+  .top-10 {
+    top: calc(var(--spacing) * 10);
+  }
   .top-50 {
     top: calc(var(--spacing) * 50);
   }
   .top-100 {
     top: calc(var(--spacing) * 100);
   }
+  .right-0 {
+    right: calc(var(--spacing) * 0);
+  }
   .right-4 {
     right: calc(var(--spacing) * 4);
+  }
+  .right-10 {
+    right: calc(var(--spacing) * 10);
   }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
@@ -424,12 +432,6 @@
   .my-10 {
     margin-block: calc(var(--spacing) * 10);
   }
-  .my-20 {
-    margin-block: calc(var(--spacing) * 20);
-  }
-  .my-30 {
-    margin-block: calc(var(--spacing) * 30);
-  }
   .my-auto {
     margin-block: auto;
   }
@@ -505,38 +507,14 @@
   .mt-15 {
     margin-top: calc(var(--spacing) * 15);
   }
-  .mt-20 {
-    margin-top: calc(var(--spacing) * 20);
-  }
-  .mt-23 {
-    margin-top: calc(var(--spacing) * 23);
-  }
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
-  }
-  .mt-25 {
-    margin-top: calc(var(--spacing) * 25);
-  }
-  .mt-30 {
-    margin-top: calc(var(--spacing) * 30);
-  }
-  .mt-32 {
-    margin-top: calc(var(--spacing) * 32);
   }
   .mt-35 {
     margin-top: calc(var(--spacing) * 35);
   }
   .mt-42 {
     margin-top: calc(var(--spacing) * 42);
-  }
-  .mt-45 {
-    margin-top: calc(var(--spacing) * 45);
-  }
-  .mt-50 {
-    margin-top: calc(var(--spacing) * 50);
-  }
-  .mt-55 {
-    margin-top: calc(var(--spacing) * 55);
   }
   .mt-auto {
     margin-top: auto;
@@ -604,12 +582,6 @@
   .ml-10 {
     margin-left: calc(var(--spacing) * 10);
   }
-  .ml-15 {
-    margin-left: calc(var(--spacing) * 15);
-  }
-  .ml-20 {
-    margin-left: calc(var(--spacing) * 20);
-  }
   .ml-auto {
     margin-left: auto;
   }
@@ -652,6 +624,9 @@
   .table-row {
     display: table-row;
   }
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
   .h-3 {
     height: calc(var(--spacing) * 3);
   }
@@ -685,12 +660,6 @@
   .h-25 {
     height: calc(var(--spacing) * 25);
   }
-  .h-30 {
-    height: calc(var(--spacing) * 30);
-  }
-  .h-40 {
-    height: calc(var(--spacing) * 40);
-  }
   .h-48 {
     height: calc(var(--spacing) * 48);
   }
@@ -703,17 +672,35 @@
   .h-65 {
     height: calc(var(--spacing) * 65);
   }
+  .h-70 {
+    height: calc(var(--spacing) * 70);
+  }
   .h-75 {
     height: calc(var(--spacing) * 75);
   }
-  .h-80 {
-    height: calc(var(--spacing) * 80);
+  .h-85 {
+    height: calc(var(--spacing) * 85);
+  }
+  .h-90 {
+    height: calc(var(--spacing) * 90);
+  }
+  .h-94 {
+    height: calc(var(--spacing) * 94);
+  }
+  .h-95 {
+    height: calc(var(--spacing) * 95);
+  }
+  .h-97 {
+    height: calc(var(--spacing) * 97);
   }
   .h-100 {
     height: calc(var(--spacing) * 100);
   }
   .h-105 {
     height: calc(var(--spacing) * 105);
+  }
+  .h-125 {
+    height: calc(var(--spacing) * 125);
   }
   .h-130 {
     height: calc(var(--spacing) * 130);
@@ -723,9 +710,6 @@
   }
   .h-150 {
     height: calc(var(--spacing) * 150);
-  }
-  .h-200 {
-    height: calc(var(--spacing) * 200);
   }
   .h-auto {
     height: auto;
@@ -747,6 +731,12 @@
   }
   .w-6 {
     width: calc(var(--spacing) * 6);
+  }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+  .w-20 {
+    width: calc(var(--spacing) * 20);
   }
   .w-25 {
     width: calc(var(--spacing) * 25);
@@ -772,9 +762,6 @@
   .w-75 {
     width: calc(var(--spacing) * 75);
   }
-  .w-80 {
-    width: calc(var(--spacing) * 80);
-  }
   .w-90 {
     width: calc(var(--spacing) * 90);
   }
@@ -784,38 +771,11 @@
   .w-120 {
     width: calc(var(--spacing) * 120);
   }
-  .w-130 {
-    width: calc(var(--spacing) * 130);
-  }
   .w-150 {
     width: calc(var(--spacing) * 150);
   }
-  .w-160 {
-    width: calc(var(--spacing) * 160);
-  }
-  .w-165 {
-    width: calc(var(--spacing) * 165);
-  }
-  .w-180 {
-    width: calc(var(--spacing) * 180);
-  }
   .w-200 {
     width: calc(var(--spacing) * 200);
-  }
-  .w-880 {
-    width: calc(var(--spacing) * 880);
-  }
-  .w-\[50px\] {
-    width: 50px;
-  }
-  .w-\[200px\] {
-    width: 200px;
-  }
-  .w-\[1000px\] {
-    width: 1000px;
-  }
-  .w-\[1300px\] {
-    width: 1300px;
   }
   .w-\[2100px\] {
     width: 2100px;
@@ -951,8 +911,8 @@
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
-  .gap-x-\[var\(--x-spacing\)\] {
-    column-gap: var(--x-spacing);
+  .gap-x-8 {
+    column-gap: calc(var(--spacing) * 8);
   }
   .space-x-1 {
     :where(& > :not(:last-child)) {
@@ -1129,9 +1089,6 @@
   .p-8 {
     padding: calc(var(--spacing) * 8);
   }
-  .p-20 {
-    padding: calc(var(--spacing) * 20);
-  }
   .px-0 {
     padding-inline: calc(var(--spacing) * 0);
   }
@@ -1185,9 +1142,6 @@
   }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
-  }
-  .py-30 {
-    padding-block: calc(var(--spacing) * 30);
   }
   .ps-0 {
     padding-inline-start: calc(var(--spacing) * 0);
@@ -1255,18 +1209,6 @@
   .pt-25 {
     padding-top: calc(var(--spacing) * 25);
   }
-  .pt-30 {
-    padding-top: calc(var(--spacing) * 30);
-  }
-  .pt-35 {
-    padding-top: calc(var(--spacing) * 35);
-  }
-  .pt-45 {
-    padding-top: calc(var(--spacing) * 45);
-  }
-  .pt-55 {
-    padding-top: calc(var(--spacing) * 55);
-  }
   .pr-3 {
     padding-right: calc(var(--spacing) * 3);
   }
@@ -1308,12 +1250,6 @@
   }
   .pl-8 {
     padding-left: calc(var(--spacing) * 8);
-  }
-  .pl-10 {
-    padding-left: calc(var(--spacing) * 10);
-  }
-  .pl-20 {
-    padding-left: calc(var(--spacing) * 20);
   }
   .pl-85 {
     padding-left: calc(var(--spacing) * 85);
@@ -1427,9 +1363,6 @@
   }
   .text-white {
     color: var(--color-white);
-  }
-  .text-yellow-500 {
-    color: var(--color-yellow-500);
   }
   .capitalize {
     text-transform: capitalize;
