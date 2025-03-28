@@ -6,19 +6,31 @@
 <link rel="stylesheet" href="~/css/sitelanding.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
-
 <style>
     html {
         scroll-behavior: smooth;
         font-family: 'PT Sans Narrow', sans-serif;
-        overflow: auto;
-        scrollbar-width: none;
+        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
-    
-    body::-webkit-scrollbar {
-        display: none; 
-    }
+        html::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        html::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+            border: 2px solid #f0f0f0;
+        }
+
+            html::-webkit-scrollbar-thumb:hover {
+                background-color: #555;
+            }
 </style>
 
 <body>

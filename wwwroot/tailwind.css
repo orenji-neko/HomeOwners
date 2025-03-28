@@ -516,6 +516,12 @@
   .mt-42 {
     margin-top: calc(var(--spacing) * 42);
   }
+  .mt-\[-10px\] {
+    margin-top: -10px;
+  }
+  .mt-\[-100px\] {
+    margin-top: -100px;
+  }
   .mt-auto {
     margin-top: auto;
   }
@@ -638,6 +644,9 @@
   }
   .h-6 {
     height: calc(var(--spacing) * 6);
+  }
+  .h-7 {
+    height: calc(var(--spacing) * 7);
   }
   .h-8 {
     height: calc(var(--spacing) * 8);
