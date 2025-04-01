@@ -35,20 +35,22 @@ namespace HomeOwners.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(SignInViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(
-                    model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-
-                if (result.Succeeded)
-                {
-                    // Redirect to /User/Home
-                    return RedirectToAction("Home", "User");
-                }
-
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View(model);
             }
-            return View(model);
+
+            var result = await _signInManager.PasswordSignInAsync(
+                    model.Email, model.Password, model.RememberMe, lockoutOnFailure: false
+                );
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt");
+                return View(model);
+            }
+
+            return RedirectToAction("Home", "User");
         }
 
         // GET: /Account/SignUp

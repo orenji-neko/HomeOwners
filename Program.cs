@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 
 // Configure the DbContext for Identity
 builder.Services.AddDbContext<IdentityContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("default"))
+    options.UseSqlServer(builder.Configuration.GetConnectionString("default"))
 );
 
 // Register Identity services – note we use ApplicationUser and IdentityRole
@@ -39,22 +39,6 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 // App Instance
 var app = builder.Build();
-
-
-// role seeding
-using (var scope = app.Services.CreateScope())
-{
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var roles = new[] { "Admin", "User" };
-
-    foreach (var role in roles)
-    {
-        if (!await roleManager.RoleExistsAsync(role))
-        {
-            await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
-}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
