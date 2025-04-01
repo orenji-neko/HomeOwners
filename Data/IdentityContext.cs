@@ -70,17 +70,45 @@ namespace HomeOwners.Data
                 new Facility
                 {
                     Id = "test-facility-0001",
-                    Name = "Swimming Pool",
-                    Description = "A pool where you can swim.",
-                    Address = "2578 Folsom Street, San Francisco, CA, 94110"
+                    Name = "Facility Name",
+                    Description = "Tell me about this facility",
+                    Address = "Somewhere, i don't really know."
                 },
                 new Facility
                 {
                     Id = "test-facility-0002",
-                    Name = "Golf Park",
-                    Description = "Park where you can play golf",
-                    Address = "2578 Folsom Street, San Francisco, CA, 94110"
-                }
+                    Name = "Facility Name",
+                    Description = "Tell me about this facility",
+                    Address = "Somewhere, i don't really know."
+                },
+                new Facility
+                {
+                    Id = "test-facility-0003",
+                    Name = "Facility Name",
+                    Description = "Tell me about this facility",
+                    Address = "Somewhere, i don't really know."
+                },
+                new Facility
+                {
+                    Id = "test-facility-0004",
+                    Name = "Facility Name",
+                    Description = "Tell me about this facility",
+                    Address = "Somewhere, i don't really know."
+                },
+                new Facility
+                {
+                    Id = "test-facility-0005",
+                    Name = "Facility Name",
+                    Description = "Tell me about this facility",
+                    Address = "Somewhere, i don't really know."
+                },
+                new Facility
+                {
+                    Id = "test-facility-0006",
+                    Name = "Facility Name",
+                    Description = "Tell me about this facility",
+                    Address = "Somewhere, i don't really know."
+                },
                 ]);
         }
     }

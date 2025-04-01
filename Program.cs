@@ -14,7 +14,7 @@ builder.Services.AddControllersWithViews();
 // Configure the DbContext for Identity
 builder.Services.AddDbContext<IdentityContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("default"));
+    options.UseSqlite("Data Source=database.db");
 });
 
 // Register Identity services – note we use ApplicationUser and IdentityRole

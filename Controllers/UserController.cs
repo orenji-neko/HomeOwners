@@ -44,6 +44,10 @@ namespace HomeOwners.Controllers
             return View();
         }
 
+        /**
+         * [GET] /User/Facility
+         */
+        [HttpGet]
         public async Task<IActionResult> Facility(string? name)
         {
             Facility[] facilities;

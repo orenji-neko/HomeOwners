@@ -33,23 +33,22 @@
 </style>
 
 
-<div class="pt-25 gap-y-6 bg-gray-100 pb-10">
+<div class="flex flex-col bg-gray-100 p-4">
 	<div class="flex flex-row items-center justify-between px-15 pb-10">
-		<h2 class="text-3xl font-bold relative after:content-[''] after:block after:mt-1 after:w-15 after:h-1 after:bg-green-500 after:absolute after:left-0">
+		<h2 class="text-3xl font-bold">
 			<span>List of Facilities</span>
 		</h2>
 		<!-- Calendar Icon and Date Picker -->
 		<div class="flex items-center ">
 
 			<div class="flex items-center border border-black rounded-lg h-9 w-64 px-2">
-				<span class="material-icons text-gray-500">search</span>
 				<form method="GET">
 					<input type="search" name="name" class="flex-grow px-2 focus:outline-none" placeholder="SEARCH" value="@searchTerm" />
 				</form>
 			</div>
 		</div>
 	</div>
-	<div class="flex flex-wrap gap-x-8 mx-10">
+	<div class="flex flex-wrap gap-4 h-full">
 		@foreach (var facility in Model)
 		{
 			<div class="w-[350px] bg-white shadow-md rounded-lg overflow-hidden mb-10 transform transition-transform duration-300 hover:scale-105">
