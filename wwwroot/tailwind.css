@@ -769,6 +769,9 @@
   .w-200 {
     width: calc(var(--spacing) * 200);
   }
+  .w-\[350px\] {
+    width: 350px;
+  }
   .w-\[2100px\] {
     width: 2100px;
   }

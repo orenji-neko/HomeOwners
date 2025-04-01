@@ -44,9 +44,20 @@ namespace HomeOwners.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Facility()
+        public async Task<IActionResult> Facility(string? name)
         {
-            var facilities = await _context._facility.ToArrayAsync();
+            Facility[] facilities;
+
+            if (name != null)
+            {
+                facilities = await _context.facility.Where(e => e.Name.Contains(name)).ToArrayAsync();
+                ViewBag.SearchTerm = name;
+            }
+            else
+            {
+                facilities = await _context.facility.ToArrayAsync();
+            }
+
             return View(facilities);
         }
 

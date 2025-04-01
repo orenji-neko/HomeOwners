@@ -10,7 +10,7 @@ namespace HomeOwners.Data
 {
     public class IdentityContext : IdentityDbContext<User, IdentityRole, string>
     {
-        public DbSet<Facility> _facility {  get; set; }
+        public DbSet<Facility> facility {  get; set; }
 
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options) { }
 

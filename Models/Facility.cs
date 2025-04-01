@@ -5,15 +5,15 @@ namespace HomeOwners.Models
     public class Facility
     {
         [Key]
-        public string? Id { get; set; }
+        public required string Id { get; set; }
 
         [Required]
-        public string? Name { get; set; }
+        public required string Name { get; set; }
 
         [Required]
-        public string? Address { get; set; }
+        public required string Address { get; set; }
 
         [Required]
-        public string? Description { get; set; }
+        public required string Description { get; set; }
     }
 }
