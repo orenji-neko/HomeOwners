@@ -1,8 +1,10 @@
-﻿using HomeOwners.Models;
+﻿using HomeOwners.Data;
+using HomeOwners.Models;
 using HomeOwners.Models.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomeOwners.Controllers
 {
@@ -14,11 +16,16 @@ namespace HomeOwners.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<User> _userManager;
+        private readonly IdentityContext _context;
 
-        public UserController(ILogger<HomeController> logger, UserManager<User> userManager)
+        public UserController(
+            ILogger<HomeController> logger, 
+            UserManager<User> userManager, 
+            IdentityContext context)
         {
             _logger = logger;
             _userManager = userManager;
+            _context = context;
         }
 
         public async Task<IActionResult> Home()
@@ -37,9 +44,10 @@ namespace HomeOwners.Controllers
             return View();
         }
 
-        public IActionResult Facility()
+        public async Task<IActionResult> Facility()
         {
-            return View();
+            var facilities = await _context._facility.ToArrayAsync();
+            return View(facilities);
         }
 
         public IActionResult Event()

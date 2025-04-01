@@ -4,11 +4,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Net;
 
 namespace HomeOwners.Data
 {
     public class IdentityContext : IdentityDbContext<User, IdentityRole, string>
     {
+        public DbSet<Facility> _facility {  get; set; }
+
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -61,6 +64,24 @@ namespace HomeOwners.Data
                     RoleId = userRole.Id,
                     UserId = user.Id,
                 });
+
+            // Facility seeding
+            builder.Entity<Facility>().HasData([
+                new Facility
+                {
+                    Id = "test-facility-0001",
+                    Name = "Swimming Pool",
+                    Description = "A pool where you can swim.",
+                    Address = "2578 Folsom Street, San Francisco, CA, 94110"
+                },
+                new Facility
+                {
+                    Id = "test-facility-0002",
+                    Name = "Golf Park",
+                    Description = "Park where you can play golf",
+                    Address = "2578 Folsom Street, San Francisco, CA, 94110"
+                }
+                ]);
         }
     }
 

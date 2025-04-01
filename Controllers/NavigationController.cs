@@ -2,11 +2,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace HomeOwners.Controllers
 {
-    [ChildActionOnly]
     public class NavigationController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly UserManager<User> _userManager;
