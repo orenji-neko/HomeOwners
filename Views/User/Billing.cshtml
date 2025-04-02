@@ -3,15 +3,32 @@
     ViewData["Title"] = "Billing";
 }
 
-<div class="mt-50 pt-50">
-    <span>
-        BILLING HERE
-    </span>
+<div class="flex flex-col w-full h-full bg-gray-100">
+    <header class="px-15 py-10">
+        <h1 class="text-3xl font-bold">List of Billings</h1>
+    </header>
 
-    @foreach (var billing in Model)
-    {
-        <p>@billing.Name</p>
-        <p>@billing.Amount</p>
-        <p>@billing.IssuedAt.ToShortDateString()</p>
-    }
+    <main class="px-15">
+        <table class="w-full">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Amount</th>
+                    <th>Issued At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var billing in Model)
+                {
+                    <tr>
+                        <td>@billing.Name</td>
+                        <td>@billing.Amount</td>
+                        <td>@billing.IssuedAt</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        
+    </main>
 </div>
