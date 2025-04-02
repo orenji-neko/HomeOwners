@@ -11,7 +11,7 @@ namespace HomeOwners.Controllers
     /**
      * Controller specifically for user accounts only.
      */
-    [Authorize(Policy = "UserOnly")]
+   
     public class UserController : Controller
     {
         private readonly ILogger<HomeController> _logger;
