@@ -10,9 +10,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HomeOwners.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
-    [Migration("20250401051131_seeding_facility")]
-    partial class seeding_facility
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20250402142118_seed-billing-2")]
+    partial class seedbilling2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -105,7 +105,7 @@ namespace HomeOwners.Migrations
                             Id = "test-user-0001",
                             AccessFailedCount = 0,
                             Address = "123 User St.",
-                            ConcurrencyStamp = "0c7fe4bf-5f70-4e62-95ff-7bccb376b3ff",
+                            ConcurrencyStamp = "8ad654c4-c810-49f3-8cc3-6677f0a6a01f",
                             Email = "user@email.com",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -114,12 +114,73 @@ namespace HomeOwners.Migrations
                             MidInitial = "A",
                             NormalizedEmail = "USER@EMAIL.COM",
                             NormalizedUserName = "USER@EMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBoGJx591ufk5g86QDboBQEs55JAJ5E3yJh7L9lzFNYl66YeIYOGHjnUq7CkGlZLNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHDhlYMANcxZ8YQUCGLA8Qlj5xI5o9caPRTv+tJGGA46eWNNipeMsYBujvA081WPxg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ff12a9a6-dff8-4bc9-bc60-78eea57f6c77",
+                            SecurityStamp = "16da81be-b014-445c-8667-25f26ec9f46f",
                             TwoFactorEnabled = false,
                             UserName = "user@email.com"
                         });
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateOnly>("IssuedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Billing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "test-billing-0001",
+                            Amount = 2000.0,
+                            IsPaid = false,
+                            IssuedAt = new DateOnly(2025, 4, 2),
+                            Name = "Rent",
+                            UserId = "test-user-0001"
+                        });
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Event", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("StartedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("HomeOwners.Models.Facility", b =>
@@ -141,7 +202,7 @@ namespace HomeOwners.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("facility");
+                    b.ToTable("Facility");
 
                     b.HasData(
                         new
@@ -337,6 +398,17 @@ namespace HomeOwners.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.HasOne("HomeOwners.Models.Authentication.User", "User")
+                        .WithMany("Billings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -386,6 +458,11 @@ namespace HomeOwners.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Authentication.User", b =>
+                {
+                    b.Navigation("Billings");
                 });
 #pragma warning restore 612, 618
         }

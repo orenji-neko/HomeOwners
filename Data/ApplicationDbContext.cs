@@ -8,21 +8,42 @@ using System.Net;
 
 namespace HomeOwners.Data
 {
-    public class IdentityContext : IdentityDbContext<User, IdentityRole, string>
+    public class ApplicationDbContext : IdentityDbContext<User, IdentityRole, string>
     {
-        public DbSet<Facility> facility {  get; set; }
+        /**
+         * Auto-generated Tables.
+         */
+        public DbSet<Facility> Facility { get; set; }
+        public DbSet<Billing> Billing { get; set; }
+        public DbSet<Event> Events { get; set; }
 
-        public IdentityContext(DbContextOptions<IdentityContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+            optionsBuilder.EnableSensitiveDataLogging();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
+            /**
+             * User[One] <-> Billing[Many]
+             */
+            builder.Entity<User>()
+                .HasMany(e => e.Billings)
+                .WithOne(e => e.User)
+                .HasForeignKey(e => e.UserId)
+                .IsRequired();
+
+            // seeding table operations. remove in production
+            SeedTables(builder);
+        }
+
+        private void SeedTables(ModelBuilder builder)
+        {
             // password hashing bullshit
             var hasher = new PasswordHasher<User>();
 
@@ -109,6 +130,28 @@ namespace HomeOwners.Data
                     Description = "Tell me about this facility",
                     Address = "Somewhere, i don't really know."
                 },
+                ]);
+
+            // Billing Seeding for user@email.com
+            builder.Entity<Billing>().HasData([
+                new Billing
+                {
+                    Id = "test-billing-0001",
+                    Name = "Rent",
+                    IsPaid = false,
+                    Amount = 2000.00,
+                    UserId = "test-user-0001",
+                    IssuedAt = new DateOnly(2025, 4, 2)
+                },
+                new Billing
+                {
+                    Id = "test-billing-0002",
+                    Name = "Electricity",
+                    IsPaid = false,
+                    Amount = 150.00,
+                    UserId = "test-user-0001",
+                    IssuedAt = new DateOnly(2025, 4, 2)
+                }
                 ]);
         }
     }

@@ -3,19 +3,16 @@ using System;
 using HomeOwners.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace HomeOwners.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
-    [Migration("20250401050626_initialize")]
-    partial class initialize
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
@@ -105,7 +102,7 @@ namespace HomeOwners.Migrations
                             Id = "test-user-0001",
                             AccessFailedCount = 0,
                             Address = "123 User St.",
-                            ConcurrencyStamp = "04390667-5e0a-4247-a2f7-011500514731",
+                            ConcurrencyStamp = "d5cf0a1e-c579-4d6f-a285-cb83b4a98eb2",
                             Email = "user@email.com",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -114,12 +111,82 @@ namespace HomeOwners.Migrations
                             MidInitial = "A",
                             NormalizedEmail = "USER@EMAIL.COM",
                             NormalizedUserName = "USER@EMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGGAd+utqqOpqNmCvm5TxruuLbLHtoPjb2Z+nqrsbokpUBtevo9pgXB/88hPSTGT0Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK1ueo/uXjNyIIDU484G5bIdzgEtpaTBgZSgVjvHHs7ESQQnvbnPOC30lV4Uoyh1pw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7912a8c9-74d5-4f8c-9a34-743550c89c6a",
+                            SecurityStamp = "4e056c83-efef-4be3-8862-b59463226719",
                             TwoFactorEnabled = false,
                             UserName = "user@email.com"
                         });
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateOnly>("IssuedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Billing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "test-billing-0001",
+                            Amount = 2000.0,
+                            IsPaid = false,
+                            IssuedAt = new DateOnly(2025, 4, 2),
+                            Name = "Rent",
+                            UserId = "test-user-0001"
+                        },
+                        new
+                        {
+                            Id = "test-billing-0002",
+                            Amount = 150.0,
+                            IsPaid = false,
+                            IssuedAt = new DateOnly(2025, 4, 2),
+                            Name = "Electricity",
+                            UserId = "test-user-0001"
+                        });
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Event", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("StartedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("HomeOwners.Models.Facility", b =>
@@ -141,22 +208,50 @@ namespace HomeOwners.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("facility");
+                    b.ToTable("Facility");
 
                     b.HasData(
                         new
                         {
                             Id = "test-facility-0001",
-                            Address = "2578 Folsom Street, San Francisco, CA, 94110",
-                            Description = "A pool where you can swim.",
-                            Name = "Swimming Pool"
+                            Address = "Somewhere, i don't really know.",
+                            Description = "Tell me about this facility",
+                            Name = "Facility Name"
                         },
                         new
                         {
                             Id = "test-facility-0002",
-                            Address = "2578 Folsom Street, San Francisco, CA, 94110",
-                            Description = "Park where you can play golf",
-                            Name = "Golf Park"
+                            Address = "Somewhere, i don't really know.",
+                            Description = "Tell me about this facility",
+                            Name = "Facility Name"
+                        },
+                        new
+                        {
+                            Id = "test-facility-0003",
+                            Address = "Somewhere, i don't really know.",
+                            Description = "Tell me about this facility",
+                            Name = "Facility Name"
+                        },
+                        new
+                        {
+                            Id = "test-facility-0004",
+                            Address = "Somewhere, i don't really know.",
+                            Description = "Tell me about this facility",
+                            Name = "Facility Name"
+                        },
+                        new
+                        {
+                            Id = "test-facility-0005",
+                            Address = "Somewhere, i don't really know.",
+                            Description = "Tell me about this facility",
+                            Name = "Facility Name"
+                        },
+                        new
+                        {
+                            Id = "test-facility-0006",
+                            Address = "Somewhere, i don't really know.",
+                            Description = "Tell me about this facility",
+                            Name = "Facility Name"
                         });
                 });
 
@@ -309,6 +404,17 @@ namespace HomeOwners.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.HasOne("HomeOwners.Models.Authentication.User", "User")
+                        .WithMany("Billings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -358,6 +464,11 @@ namespace HomeOwners.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Authentication.User", b =>
+                {
+                    b.Navigation("Billings");
                 });
 #pragma warning restore 612, 618
         }

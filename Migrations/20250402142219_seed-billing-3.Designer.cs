@@ -3,16 +3,19 @@ using System;
 using HomeOwners.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace HomeOwners.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20250402142219_seed-billing-3")]
+    partial class seedbilling3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
@@ -102,7 +105,7 @@ namespace HomeOwners.Migrations
                             Id = "test-user-0001",
                             AccessFailedCount = 0,
                             Address = "123 User St.",
-                            ConcurrencyStamp = "0c7fe4bf-5f70-4e62-95ff-7bccb376b3ff",
+                            ConcurrencyStamp = "d5cf0a1e-c579-4d6f-a285-cb83b4a98eb2",
                             Email = "user@email.com",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -111,12 +114,82 @@ namespace HomeOwners.Migrations
                             MidInitial = "A",
                             NormalizedEmail = "USER@EMAIL.COM",
                             NormalizedUserName = "USER@EMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBoGJx591ufk5g86QDboBQEs55JAJ5E3yJh7L9lzFNYl66YeIYOGHjnUq7CkGlZLNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK1ueo/uXjNyIIDU484G5bIdzgEtpaTBgZSgVjvHHs7ESQQnvbnPOC30lV4Uoyh1pw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ff12a9a6-dff8-4bc9-bc60-78eea57f6c77",
+                            SecurityStamp = "4e056c83-efef-4be3-8862-b59463226719",
                             TwoFactorEnabled = false,
                             UserName = "user@email.com"
                         });
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateOnly>("IssuedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Billing");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "test-billing-0001",
+                            Amount = 2000.0,
+                            IsPaid = false,
+                            IssuedAt = new DateOnly(2025, 4, 2),
+                            Name = "Rent",
+                            UserId = "test-user-0001"
+                        },
+                        new
+                        {
+                            Id = "test-billing-0002",
+                            Amount = 150.0,
+                            IsPaid = false,
+                            IssuedAt = new DateOnly(2025, 4, 2),
+                            Name = "Electricity",
+                            UserId = "test-user-0001"
+                        });
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Event", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("StartedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("HomeOwners.Models.Facility", b =>
@@ -138,7 +211,7 @@ namespace HomeOwners.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("facility");
+                    b.ToTable("Facility");
 
                     b.HasData(
                         new
@@ -334,6 +407,17 @@ namespace HomeOwners.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.HasOne("HomeOwners.Models.Authentication.User", "User")
+                        .WithMany("Billings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -383,6 +467,11 @@ namespace HomeOwners.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Authentication.User", b =>
+                {
+                    b.Navigation("Billings");
                 });
 #pragma warning restore 612, 618
         }

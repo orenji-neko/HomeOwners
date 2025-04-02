@@ -6,9 +6,9 @@ namespace HomeOwnersManagementSystem.Services
 {
     public class UserRepository
     {
-        private readonly IdentityContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public UserRepository(IdentityContext context)
+        public UserRepository(ApplicationDbContext context)
         {
 
             _context = context;

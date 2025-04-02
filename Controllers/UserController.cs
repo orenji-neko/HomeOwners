@@ -16,12 +16,12 @@ namespace HomeOwners.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly UserManager<User> _userManager;
-        private readonly IdentityContext _context;
+        private readonly ApplicationDbContext _context;
 
         public UserController(
             ILogger<HomeController> logger, 
             UserManager<User> userManager, 
-            IdentityContext context)
+            ApplicationDbContext context)
         {
             _logger = logger;
             _userManager = userManager;
@@ -54,12 +54,12 @@ namespace HomeOwners.Controllers
 
             if (name != null)
             {
-                facilities = await _context.facility.Where(e => e.Name.Contains(name)).ToArrayAsync();
+                facilities = await _context.Facility.Where(e => e.Name.Contains(name)).ToArrayAsync();
                 ViewBag.SearchTerm = name;
             }
             else
             {
-                facilities = await _context.facility.ToArrayAsync();
+                facilities = await _context.Facility.ToArrayAsync();
             }
 
             return View(facilities);
@@ -85,9 +85,14 @@ namespace HomeOwners.Controllers
             return View();
         }
 
-        public IActionResult Billing()
+        public async Task<IActionResult> Billing()
         {
-            return View();
+            var currentUser = await _userManager.GetUserAsync(User);
+            var billings = await _context.Billing
+                .Where(b => b.UserId == currentUser.Id)
+                .ToListAsync();
+
+            return View(billings);
         }
 
         public IActionResult Profile()

@@ -57,7 +57,21 @@ namespace HomeOwners.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "facility",
+                name: "Events",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    StartedAt = table.Column<DateOnly>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Facility",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
@@ -67,7 +81,7 @@ namespace HomeOwners.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_facility", x => x.Id);
+                    table.PrimaryKey("PK_Facility", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,6 +190,27 @@ namespace HomeOwners.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Billing",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Amount = table.Column<double>(type: "REAL", nullable: false),
+                    UserId = table.Column<string>(type: "TEXT", nullable: false),
+                    IsPaid = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Billing", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Billing_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
@@ -188,15 +223,19 @@ namespace HomeOwners.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "MidInitial", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "test-user-0001", 0, "123 User St.", "04390667-5e0a-4247-a2f7-011500514731", "user@email.com", false, "John", "Doe", false, null, "A", "USER@EMAIL.COM", "USER@EMAIL.COM", "AQAAAAIAAYagAAAAEGGAd+utqqOpqNmCvm5TxruuLbLHtoPjb2Z+nqrsbokpUBtevo9pgXB/88hPSTGT0Q==", null, false, "7912a8c9-74d5-4f8c-9a34-743550c89c6a", false, "user@email.com" });
+                values: new object[] { "test-user-0001", 0, "123 User St.", "af80ba14-78af-4eff-a7ea-124f1bfe1bad", "user@email.com", false, "John", "Doe", false, null, "A", "USER@EMAIL.COM", "USER@EMAIL.COM", "AQAAAAIAAYagAAAAEKBzaA4VdL997HxmNOWTH2sHIrHS5uP/jb0HKskp2dsYW/+0/CkW8/mK0Y4hsnHVbg==", null, false, "d7ffc6c4-9766-42c0-a182-6680df6b80c0", false, "user@email.com" });
 
             migrationBuilder.InsertData(
-                table: "facility",
+                table: "Facility",
                 columns: new[] { "Id", "Address", "Description", "Name" },
                 values: new object[,]
                 {
-                    { "test-facility-0001", "2578 Folsom Street, San Francisco, CA, 94110", "A pool where you can swim.", "Swimming Pool" },
-                    { "test-facility-0002", "2578 Folsom Street, San Francisco, CA, 94110", "Park where you can play golf", "Golf Park" }
+                    { "test-facility-0001", "Somewhere, i don't really know.", "Tell me about this facility", "Facility Name" },
+                    { "test-facility-0002", "Somewhere, i don't really know.", "Tell me about this facility", "Facility Name" },
+                    { "test-facility-0003", "Somewhere, i don't really know.", "Tell me about this facility", "Facility Name" },
+                    { "test-facility-0004", "Somewhere, i don't really know.", "Tell me about this facility", "Facility Name" },
+                    { "test-facility-0005", "Somewhere, i don't really know.", "Tell me about this facility", "Facility Name" },
+                    { "test-facility-0006", "Somewhere, i don't really know.", "Tell me about this facility", "Facility Name" }
                 });
 
             migrationBuilder.InsertData(
@@ -240,6 +279,11 @@ namespace HomeOwners.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Billing_UserId",
+                table: "Billing",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -261,7 +305,13 @@ namespace HomeOwners.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "facility");
+                name: "Billing");
+
+            migrationBuilder.DropTable(
+                name: "Events");
+
+            migrationBuilder.DropTable(
+                name: "Facility");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
