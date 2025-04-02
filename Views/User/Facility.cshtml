@@ -1,64 +1,167 @@
 ﻿@model IEnumerable<Facility>
 
 @{
-	ViewData["Title"] = "Facility";
-	var searchTerm = ViewBag.SearchTerm as string;
+    ViewData["Title"] = "Facilities";
+    var searchTerm = ViewBag.SearchTerm as string;
 }
-
 <style>
-	html {
-		scroll-behavior: smooth;
-		font-family: 'PT Sans Narrow', sans-serif;
-		overflow-y: scroll;
-		overflow-x: hidden;
-	}
+    html {
+        scroll-behavior: smooth;
+        font-family: 'PT Sans Narrow', sans-serif;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
 
-		html::-webkit-scrollbar {
-			width: 8px;
-		}
+        html::-webkit-scrollbar {
+            width: 8px;
+        }
 
-		html::-webkit-scrollbar-track {
-			background: #f0f0f0;
-		}
+        html::-webkit-scrollbar-track {
+            background: #f0f0f0;
+        }
 
-		html::-webkit-scrollbar-thumb {
-			background-color: #888;
-			border-radius: 4px;
-			border: 2px solid #f0f0f0;
-		}
+        html::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+            border: 2px solid #f0f0f0;
+        }
 
-			html::-webkit-scrollbar-thumb:hover {
-				background-color: #555;
-			}
+            html::-webkit-scrollbar-thumb:hover {
+                background-color: #555;
+            }
 </style>
 
+<div class="min-h-screen bg-gray-50 p-6">
+    <!-- Header Section -->
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-800">Our Facilities</h1>
+                <p class="text-gray-600 mt-2">Browse and book our premium facilities</p>
+            </div>
 
-<div class="flex flex-col bg-gray-100 p-4">
-	<div class="flex flex-row items-center justify-between px-15 pb-10">
-		<h2 class="text-3xl font-bold">
-			<span>List of Facilities</span>
-		</h2>
-		<!-- Calendar Icon and Date Picker -->
-		<div class="flex items-center ">
+            <!-- Search Box -->
+            <div class="relative w-full md:w-64">
+                <form method="GET">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="search" name="name"
+                           class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                           placeholder="Search facilities..."
+                           value="@searchTerm">
+                </form>
+            </div>
+        </div>
 
-			<div class="flex items-center border border-black rounded-lg h-9 w-64 px-2">
-				<form method="GET">
-					<input type="search" name="name" class="flex-grow px-2 focus:outline-none" placeholder="SEARCH" value="@searchTerm" />
-				</form>
-			</div>
-		</div>
-	</div>
-	<div class="flex flex-wrap gap-4 h-full">
-		@foreach (var facility in Model)
-		{
-			<div class="w-[350px] bg-white shadow-md rounded-lg overflow-hidden mb-10 transform transition-transform duration-300 hover:scale-105">
-				<img src="~/image/facility.png" alt="Facility" class="w-full h-48 object-cover">
-				<div class="p-4">
-					<h2 class="text-xl font-semibold">@facility.Name</h2>
-					<p class="text-sm text-gray-600">@facility.Address</p>
-					<p>@facility.Description</p>
-				</div>
-			</div>
-		}
-	</div>
+        <!-- Facilities Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            @foreach (var facility in Model)
+            {
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer facility-card"
+                     onclick="openModal(
+                        '@facility.Name',
+                        '@facility.Address',
+                        '@facility.Description')">
+
+                    <div class="relative h-48 w-full overflow-hidden">
+                        <img src="~/image/facility.png" alt="@facility.Name" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                            <h3 class="text-xl font-semibold text-white">@facility.Name</h3>
+                        </div>
+                    </div>
+
+                    <div class="p-4">
+                        <div class="flex items-center text-sm text-gray-500 mb-2">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>@facility.Address</span>
+                        </div>
+                        <p class="text-gray-700 line-clamp-2">@facility.Description</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
+
+<!-- Modal Structure -->
+<div id="facilityModal" class="fixed inset-0 z-50 hidden overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- Background overlay -->
+        <div class="fixed inset-0 transition-opacity" aria-hidden="true" onclick="closeModal()">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+
+        <!-- Modal content -->
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                        <div class="flex justify-between items-start">
+                            <h3 id="modalFacilityName" class="text-2xl leading-6 font-bold text-gray-900 mb-4"></h3>
+                            <button type="button" onclick="closeModal()" class="text-gray-400 hover:text-gray-500">
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <img id="modalFacilityImage" src="~/image/facility.png" alt="Facility" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-500">Address</h4>
+                                    <p id="modalFacilityAddress" class="mt-1 text-gray-900"></p>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-500">Description</h4>
+                                    <p id="modalFacilityDescription" class="mt-1 text-gray-900"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    Book Now
+                </button>
+                <button type="button" onclick="closeModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(name, address, description) {
+        document.getElementById('modalFacilityName').textContent = name;
+        document.getElementById('modalFacilityAddress').textContent = address;
+        document.getElementById('modalFacilityDescription').textContent = description;
+
+        // Show modal
+        document.getElementById('facilityModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('facilityModal').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('facilityModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>
