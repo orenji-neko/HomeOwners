@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Billing>
+@{
     ViewData["Title"] = "Billing";
 }
 
@@ -6,4 +7,11 @@
     <span>
         BILLING HERE
     </span>
+
+    @foreach (var billing in Model)
+    {
+        <p>@billing.Name</p>
+        <p>@billing.Amount</p>
+        <p>@billing.IssuedAt.ToShortDateString()</p>
+    }
 </div>

@@ -85,9 +85,14 @@ namespace HomeOwners.Controllers
             return View();
         }
 
-        public IActionResult Billing()
+        public async Task<IActionResult> Billing()
         {
-            return View();
+            var currentUser = await _userManager.GetUserAsync(User);
+            var billings = await _context.Billing
+                .Where(b => b.UserId == currentUser.Id)
+                .ToListAsync();
+
+            return View(billings);
         }
 
         public IActionResult Profile()

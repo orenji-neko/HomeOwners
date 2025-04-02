@@ -3,6 +3,7 @@ using System;
 using HomeOwners.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeOwners.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250402140847_seed-billing")]
+    partial class seedbilling
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
@@ -102,7 +105,7 @@ namespace HomeOwners.Migrations
                             Id = "test-user-0001",
                             AccessFailedCount = 0,
                             Address = "123 User St.",
-                            ConcurrencyStamp = "d5cf0a1e-c579-4d6f-a285-cb83b4a98eb2",
+                            ConcurrencyStamp = "b6e11039-f2db-4953-80a7-9bf93e43135a",
                             Email = "user@email.com",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -111,9 +114,9 @@ namespace HomeOwners.Migrations
                             MidInitial = "A",
                             NormalizedEmail = "USER@EMAIL.COM",
                             NormalizedUserName = "USER@EMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK1ueo/uXjNyIIDU484G5bIdzgEtpaTBgZSgVjvHHs7ESQQnvbnPOC30lV4Uoyh1pw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOHLu3gBe0rVEPgfXYUW7D5HD/AqBRORU0h4WEjmyU4wxO+UMP6J8Bqx6DqRdBaJ8g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4e056c83-efef-4be3-8862-b59463226719",
+                            SecurityStamp = "03433448-c8bd-4099-a6ab-364819e5ad0e",
                             TwoFactorEnabled = false,
                             UserName = "user@email.com"
                         });
@@ -129,9 +132,6 @@ namespace HomeOwners.Migrations
 
                     b.Property<bool>("IsPaid")
                         .HasColumnType("INTEGER");
-
-                    b.Property<DateOnly>("IssuedAt")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -153,17 +153,7 @@ namespace HomeOwners.Migrations
                             Id = "test-billing-0001",
                             Amount = 2000.0,
                             IsPaid = false,
-                            IssuedAt = new DateOnly(2025, 4, 2),
                             Name = "Rent",
-                            UserId = "test-user-0001"
-                        },
-                        new
-                        {
-                            Id = "test-billing-0002",
-                            Amount = 150.0,
-                            IsPaid = false,
-                            IssuedAt = new DateOnly(2025, 4, 2),
-                            Name = "Electricity",
                             UserId = "test-user-0001"
                         });
                 });

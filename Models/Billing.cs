@@ -18,9 +18,14 @@ namespace HomeOwners.Models
          * The user who's required to pay the bill
          */
         [Required]
-        public required User User { get; set; }
+        public User? User { get; set; }
+        [Required]
+        public string? UserId { get; set; }
 
         [Required]
         public bool IsPaid { get; set; }
+
+        [Required]
+        public DateOnly IssuedAt { get; set; }
     }
 }
