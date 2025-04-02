@@ -1,34 +1,52 @@
 ﻿@model IEnumerable<Billing>
 @{
-    ViewData["Title"] = "Billing";
+	ViewData["Title"] = "Billing";
+
+	String StatusColor(bool IsPaid)
+	{
+		return IsPaid ? " bg-green-400 text-white " : " bg-yellow-400 text-black ";
+	}
 }
 
 <div class="flex flex-col w-full h-full bg-gray-100">
-    <header class="px-15 py-10">
-        <h1 class="text-3xl font-bold">List of Billings</h1>
-    </header>
+	<header class="px-15 py-10">
+		<h1 class="text-3xl font-bold">List of Billings</h1>
+	</header>
 
-    <main class="px-15">
-        <table class="w-full">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Amount</th>
-                    <th>Issued At</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var billing in Model)
-                {
-                    <tr>
-                        <td>@billing.Name</td>
-                        <td>@billing.Amount</td>
-                        <td>@billing.IssuedAt</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+	<main class="px-15">
+		<table class="w-full">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Amount</th>
+					<th>Issued At</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var billing in Model)
+				{
+					<tr>
+						<td>@billing.Name</td>
+						<td>@billing.Amount</td>
+						<td>@billing.IssuedAt</td>
+						<td>
+							<span class="rounded px-2 @StatusColor(billing.IsPaid)">
+								@if (billing.IsPaid)
+								{
+									<text>Paid</text>
+								}
+								else
+								{
+									<text>Pending</text>
+								}
+							</span>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
 
-        
-    </main>
+
+	</main>
 </div>
