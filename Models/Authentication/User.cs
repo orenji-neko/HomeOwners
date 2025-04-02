@@ -18,6 +18,7 @@ namespace HomeOwners.Models.Authentication
         [Required]
         public string? Address { get; set; }
 
-        // Note: IdentityUser already has PhoneNumber, so you can remove a duplicate Phone property.
+        [Required]
+        public ICollection<Billing> Billings { get; } = new List<Billing>();
     }
 }

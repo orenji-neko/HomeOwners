@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HomeOwners.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -102,7 +102,7 @@ namespace HomeOwners.Migrations
                             Id = "test-user-0001",
                             AccessFailedCount = 0,
                             Address = "123 User St.",
-                            ConcurrencyStamp = "0c7fe4bf-5f70-4e62-95ff-7bccb376b3ff",
+                            ConcurrencyStamp = "af80ba14-78af-4eff-a7ea-124f1bfe1bad",
                             Email = "user@email.com",
                             EmailConfirmed = false,
                             FirstName = "John",
@@ -111,12 +111,59 @@ namespace HomeOwners.Migrations
                             MidInitial = "A",
                             NormalizedEmail = "USER@EMAIL.COM",
                             NormalizedUserName = "USER@EMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBoGJx591ufk5g86QDboBQEs55JAJ5E3yJh7L9lzFNYl66YeIYOGHjnUq7CkGlZLNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKBzaA4VdL997HxmNOWTH2sHIrHS5uP/jb0HKskp2dsYW/+0/CkW8/mK0Y4hsnHVbg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ff12a9a6-dff8-4bc9-bc60-78eea57f6c77",
+                            SecurityStamp = "d7ffc6c4-9766-42c0-a182-6680df6b80c0",
                             TwoFactorEnabled = false,
                             UserName = "user@email.com"
                         });
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<double>("Amount")
+                        .HasColumnType("REAL");
+
+                    b.Property<bool>("IsPaid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Billing");
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Event", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateOnly>("StartedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
                 });
 
             modelBuilder.Entity("HomeOwners.Models.Facility", b =>
@@ -138,7 +185,7 @@ namespace HomeOwners.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("facility");
+                    b.ToTable("Facility");
 
                     b.HasData(
                         new
@@ -334,6 +381,17 @@ namespace HomeOwners.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("HomeOwners.Models.Billing", b =>
+                {
+                    b.HasOne("HomeOwners.Models.Authentication.User", "User")
+                        .WithMany("Billings")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -383,6 +441,11 @@ namespace HomeOwners.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HomeOwners.Models.Authentication.User", b =>
+                {
+                    b.Navigation("Billings");
                 });
 #pragma warning restore 612, 618
         }

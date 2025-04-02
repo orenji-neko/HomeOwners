@@ -8,11 +8,16 @@ using System.Net;
 
 namespace HomeOwners.Data
 {
-    public class IdentityContext : IdentityDbContext<User, IdentityRole, string>
+    public class ApplicationDbContext : IdentityDbContext<User, IdentityRole, string>
     {
-        public DbSet<Facility> facility {  get; set; }
+        /**
+         * Auto-generated Tables.
+         */
+        public DbSet<Facility> Facility {  get; set; }
+        public DbSet<Billing> Billing { get; set; }
+        public DbSet<Event> Events { get; set; }
 
-        public IdentityContext(DbContextOptions<IdentityContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -22,6 +27,19 @@ namespace HomeOwners.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            /**
+             * Model to Model Connections
+             */
+
+            /**
+             * User[One] <-> Billing[Many]
+             */
+            builder.Entity<User>()
+                .HasMany(e => e.Billings)
+                .WithOne(e => e.User)
+                .HasForeignKey("UserId")
+                .IsRequired();
 
             // password hashing bullshit
             var hasher = new PasswordHasher<User>();
