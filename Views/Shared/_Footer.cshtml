@@ -1,29 +1,80 @@
-﻿<div class="bg-white h-24 p-2 flex items-center justify-between shadow-md  w-full">
-    <!-- Logo Section -->
-    <div>
-        <img src="~/image/logo.png" alt="LendSpace Logo" class="logo w-auto h-20 ml-10">
+﻿<!-- footer.cshtml -->
+<footer class="bg-gray-50 border-t border-gray-200 w-full py-8">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Brand Column -->
+            <div class="space-y-4">
+                <div class="flex items-center">
+                    <img src="~/image/logo.png" alt="LendSpace Logo" class="h-10 w-auto">
+                    <span class="ml-3 text-xl font-semibold text-gray-800">LendSpace</span>
+                </div>
+                <p class="text-gray-500 text-sm">
+                    Your premier destination for space rentals and event bookings.
+                </p>
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="text-gray-400 hover:text-emerald-500 transition-colors">
+                        <img src="~/image/footer.png" alt="Social Icon" class="h-6 w-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-emerald-500 transition-colors">
+                        <img src="~/image/footer1.png" alt="Social Icon" class="h-6 w-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-emerald-500 transition-colors">
+                        <img src="~/image/footer2.png" alt="Social Icon" class="h-6 w-6">
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-emerald-500 transition-colors">
+                        <img src="~/image/footer3.png" alt="Social Icon" class="h-6 w-6">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wider">Quick Links</h3>
+                <ul class="mt-4 space-y-2">
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">Home</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">Spaces</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">Events</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wider">Support</h3>
+                <ul class="mt-4 space-y-2">
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">Help Center</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">FAQs</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-500 hover:text-emerald-600 text-sm transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <h3 class="text-sm font-semibold text-gray-800 uppercase tracking-wider">Stay Updated</h3>
+                <p class="mt-4 text-gray-500 text-sm">
+                    Subscribe to our newsletter for the latest updates and offers.
+                </p>
+                <form class="mt-4 flex">
+                    <input type="email" placeholder="Your email" class="px-4 py-2 w-full text-sm border border-gray-300 rounded-l-md focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-sm rounded-r-md transition-colors">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="mt-12 pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 text-xs">
+                &copy; 2023 LendSpace. All rights reserved.
+            </p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-400 hover:text-emerald-500 text-xs transition-colors">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-emerald-500 text-xs transition-colors">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-emerald-500 text-xs transition-colors">Cookies</a>
+            </div>
+        </div>
     </div>
-    <!-- Navigation Links -->
-    <ul class="flex items-center justify-end mr-10 pr-20">
-        <li class="ml-1">
-            <a href="#" class="flex items-center space-x-1 text-xs">
-                <img src="~/image/footer.png" alt="LendSpace Logo" class="logo w-auto h-6 ml-10">
-            </a>
-        </li>
-        <li class="ml-1">
-            <a href="#" class="flex items-center space-x-1 text-xs">
-                <img src="~/image/footer1.png" alt="LendSpace Logo" class="logo w-auto h-6 ml-10">
-            </a>
-        </li>
-        <li class="ml-1">
-            <a href="#" class="flex items-center space-x-1 text-xs">
-                <img src="~/image/footer2.png" alt="LendSpace Logo" class="logo w-auto h-6 ml-10">
-            </a>
-        </li>
-        <li class="ml-1">
-            <a href="#" class="flex items-center space-x-1 text-xs">
-                <img src="~/image/footer3.png" alt="LendSpace Logo" class="logo w-auto h-6 ml-10">
-            </a>
-        </li>
-    </ul>
-</div>
+</footer>
