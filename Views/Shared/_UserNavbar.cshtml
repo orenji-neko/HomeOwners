@@ -1,126 +1,127 @@
-﻿<div class="bg-white h-20 p-2 flex items-center justify-between shadow-md">
-	<!-- Logo Section -->
-	<div>
-		<img src="~/image/logo.png" alt="LendSpace Logo" class="logo w-auto h-10 ml-10">
-	</div>
-	<!-- Navigation Links -->
-	<div class="flex items-center justify-end mr-10 text-black-500">
-		<!-- Dashboard -->
-		<div class="ml-10 flex items-center space-x-2 cursor-pointer">
-			<span data-feather="home"></span>
-			<span>DASHBOARD</span>
-		</div>
-		<div class="ml-10 relative dropdown">
-			<button class="flex items-center text-black pr-3 py-2 bg-white rounded-md cursor-pointer transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue">
-				<span>BOOKINGS</span>
-				<!-- Booking Dropdown Icon with Animation -->
-				<svg class="w-5 h-5 ml-2 -mr-1 transition-transform duration-300 transform dropdown-icon" fill="currentColor" viewBox="0 0 20 20">
-					<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-				</svg>
-			</button>
-			<div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 bg-white shadow-md absolute mt-1 w-56 rounded-md">
-				<a href="/User/Facility">
-					<span data-feather="file"></span>
-					<div class="px-4 py-2 cursor-pointer hover:bg-green-300 border border-none">Facilities</div>
-				</a>
-				<a href="/User/Reservation">
-					<span data-feather="file"></span>
-					<div class="px-4 py-2 cursor-pointer hover:bg-green-300">Reservation</div>
-				</a>
-				<a href="/User/Book">
-					<span data-feather="file"></span>
-					<div class="px-4 py-2 cursor-pointer hover:bg-green-300 border border-none">Book</div>
-				</a>
-			</div>
-		</div>
+﻿<div class="bg-white/95 backdrop-blur-sm h-24 p-2 flex items-center justify-between shadow-sm border-b border-gray-100 fixed top-0 w-full z-50">
+    <!-- Logo Section -->
+    <div class="flex items-center">
+        <a href="/" class="flex items-center group">
+            <img src="~/image/logo.png" alt="LendSpace Logo" class="logo w-auto h-10 ml-8 hover:scale-105 transition-transform duration-300 ease-out">
+            <span class="ml-3 text-xl font-semibold text-gray-800 group-hover:text-emerald-600 transition-colors duration-200"></span>
+        </a>
+    </div>
 
-		<!-- Community Dropdown -->
-		<div class="ml-10 relative dropdown">
-			<button class="flex items-center text-black pr-3 py-2 rounded-md cursor-pointer transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue">
-				<span>COMMUNITY</span>
-				<!-- Community Dropdown Icon with Animation -->
-				<svg class="w-5 h-5 ml-2 -mr-1 transition-transform duration-300 transform dropdown-icon" fill="currentColor" viewBox="0 0 20 20">
-					<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-				</svg>
-			</button>
-			<div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 bg-white shadow-md absolute mt-1 w-56 rounded-md">
+    <!-- Navigation Links -->
+    <div class="flex items-center justify-end mr-8">
+        <!-- Dashboard -->
+        <div class="group relative mx-4">
+            <a href="/User/Dashboard" class="flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-gray-100">
+                <span data-feather="home" class="w-5 h-5 text-gray-600"></span>
+                <span class="font-medium text-gray-700">Dashboard</span>
+            </a>
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-500 group-hover:w-4/5 transition-all duration-300 ease-out"></div>
+        </div>
 
-				<a href="/User/Event">
-					<span data-feather="file"></span>
-					<div class="px-4 py-2 cursor-pointer hover:bg-green-300">Events</div>
-				</a>
-				<a href="/User/Announcement">
-					<span data-feather="file"></span>
-					<div class="px-4 py-2 cursor-pointer hover:bg-green-300">Announcements</div>
-				</a>
-				<a href="/User/Forum">
-					<span data-feather="file"></span>
-					<div class="px-4 py-2 cursor-pointer hover:bg-green-300 border border-none rounded-md">Forums</div>
-				</a>
-			</div>
-		</div>
+        <!-- Bookings Dropdown -->
+        <div class="group relative mx-4 dropdown">
+            <button class="flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-gray-100">
+                <span class="font-medium text-gray-700">Bookings</span>
+                <svg class="w-4 h-4 mt-0.5 text-gray-600 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-56 origin-top-right bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 transform z-10">
+                <div class="py-1">
+                    <a href="/User/Facility" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                        <span data-feather="map-pin" class="w-4 h-4 mr-3"></span>
+                        Facilities
+                    </a>
+                    <a href="/User/Reservation" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                        <span data-feather="calendar" class="w-4 h-4 mr-3"></span>
+                        Reservations
+                    </a>
+                    <a href="/User/Book" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                        <span data-feather="plus-circle" class="w-4 h-4 mr-3"></span>
+                        New Booking
+                    </a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Community Dropdown -->
+        <div class="group relative mx-4 dropdown">
+            <button class="flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-gray-100">
+                <span class="font-medium text-gray-700">Community</span>
+                <svg class="w-4 h-4 mt-0.5 text-gray-600 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-56 origin-top-right bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 transform z-10">
+                <div class="py-1">
+                    <a href="/User/Event" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                        <span data-feather="calendar" class="w-4 h-4 mr-3"></span>
+                        Events
+                    </a>
+                    <a href="/User/Announcement" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                        <span data-feather="bell" class="w-4 h-4 mr-3"></span>
+                        Announcements
+                    </a>
+                    <a href="/User/Forum" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                        <span data-feather="message-square" class="w-4 h-4 mr-3"></span>
+                        Forums
+                    </a>
+                </div>
+            </div>
+        </div>
 
+        <!-- Billing -->
+        <div class="group relative mx-4">
+            <a href="/User/Billing" class="flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors duration-200 hover:bg-gray-100">
+                <span data-feather="credit-card" class="w-5 h-5 text-gray-600"></span>
+                <span class="font-medium text-gray-700">Billing</span>
+            </a>
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-emerald-500 group-hover:w-4/5 transition-all duration-300 ease-out"></div>
+        </div>
 
+        <!-- Notification & User Dropdown -->
+        <div class="flex items-center ml-6">
+            <!-- Notification Bell -->
+            <div class="relative mr-4">
+                <button class="p-2 rounded-full text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors relative">
+                    <span data-feather="bell" class="w-5 h-5"></span>
+                    <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                </button>
+            </div>
 
-		<!-- Billing -->
-		<div class="ml-10 flex items-center text-black pr-3 cursor-pointer">
-			<a href="/User/Billing">
-				<span data-feather="file"></span>
-				<span>BILLING</span>
-			</a>
-
-		</div>
-		<!-- Settings Dropdown -->
-		<div class="ml-10 flex relative">
-			<span data-feather="file"></span>
-			<img src="~/image/user.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
-			<img src="~/image/landing5.png" alt="User Icon" class="w-auto h-8 pl-2 cursor-pointer">
-			<div class="dropdown">
-				<button class="flex items-center cursor-pointer transition-transform duration-300 transform hover:rotate-180 hover:translate-x-2 hover:translate-y-[-1px]">
-					<img src="~/image/setting.png" alt="Settings Icon" class="w-auto h-8 pl-2">
-				</button>
-
-				<!-- Dropdown Menu -->
-				<div class="ml-[-20px] mt-3 opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95 bg-white shadow-md absolute mt-1 w-56 rounded-md">
-					<a href="/User/Profile">
-						<div class="px-4 py-2 cursor-pointer hover:bg-green-300">Edit Profile</div>
-					</a>
-					<a href="/User/Logout">
-						<div class="px-4 py-2 cursor-pointer hover:bg-red-300 border border-none rounded-md">Logout</div>
-					</a>
-				</div>
-			</div>
-
-		</div>
-	</div>
+            <!-- User Dropdown -->
+            <div class="group relative dropdown">
+                <button class="flex items-center space-x-2 focus:outline-none">
+                    <img src="~/image/user.png" alt="User" class="w-8 h-8 rounded-full border-2 border-gray-300 group-hover:border-emerald-400 transition-colors">
+                    <span class="font-medium text-gray-700 hidden md:inline-flex">User</span>
+                    <svg class="w-4 h-4 text-gray-600 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <div class="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 transform z-10">
+                    <div class="py-1">
+                        <a href="/User/Profile" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                            <span data-feather="user" class="w-4 h-4 mr-3"></span>
+                            Profile
+                        </a>
+                        <a href="/User/Settings" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 transition-colors">
+                            <span data-feather="settings" class="w-4 h-4 mr-3"></span>
+                            Settings
+                        </a>
+                        <div class="border-t border-gray-100"></div>
+                        <a href="/User/Logout" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors">
+                            <span data-feather="log-out" class="w-4 h-4 mr-3"></span>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<style>
-	.dropdown:hover .dropdown-menu,
-	.dropdown:focus-within .dropdown-menu {
-		opacity: 1;
-		transform: translate(0) scale(1);
-		visibility: visible;
-	}
-
-	.material-icons {
-		transition: transform 0.3s ease;
-	}
-
-	.dropdown:hover .material-icons,
-	.dropdown:focus-within .material-icons {
-		transform: rotate(180deg);
-	}
-
-	.dropdown button {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-	/* Add hover effect for dropdown icons */
-	.dropdown:hover .dropdown-icon,
-	.dropdown:focus-within .dropdown-icon {
-		transform: rotate(180deg);
-	}
-</style>
+<!-- Feather Icons Script -->
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace();
+</script>

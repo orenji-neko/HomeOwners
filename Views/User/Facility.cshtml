@@ -5,54 +5,122 @@
     var searchTerm = ViewBag.SearchTerm as string;
 }
 <style>
-    html {
-        scroll-behavior: smooth;
-        font-family: 'PT Sans Narrow', sans-serif;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-
-        html::-webkit-scrollbar {
-            width: 8px;
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            font-family: 'PT Sans Narrow', sans-serif;
         }
 
-        html::-webkit-scrollbar-track {
-            background: #f0f0f0;
-        }
-
-        html::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 4px;
-            border: 2px solid #f0f0f0;
-        }
-
-            html::-webkit-scrollbar-thumb:hover {
-                background-color: #555;
+            html::-webkit-scrollbar {
+                width: 8px;
             }
-</style>
 
-<div class="min-h-screen bg-gray-50 p-6">
-    <!-- Header Section -->
+            html::-webkit-scrollbar-track {
+                background: #f0f0f0;
+            }
+
+            html::-webkit-scrollbar-thumb {
+                background-color: #888;
+                border-radius: 4px;
+                border: 2px solid #f0f0f0;
+            }
+
+                html::-webkit-scrollbar-thumb:hover {
+                    background-color: #555;
+                }
+    </style>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+
+<div class="min-h-screen bg-gray-50 p-4 sm:p-6 font-['PT_Sans_Narrow']">
+    <!-- Header Section with Search and Filters -->
     <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
-                <h1 class="text-3xl font-bold text-gray-800">Our Facilities</h1>
-                <p class="text-gray-600 mt-2">Browse and book our premium facilities</p>
+                <h1 class="text-3xl font-bold text-gray-800">Our Premium Facilities</h1>
+                <p class="text-gray-600 mt-2">Browse and book our exceptional community spaces</p>
             </div>
 
-            <!-- Search Box -->
-            <div class="relative w-full md:w-64">
-                <form method="GET">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
+            <!-- Search and Filter Row -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+                <!-- Search Box -->
+                <div class="relative w-full md:w-64">
+                    <form method="GET" class="flex">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </div>
+                        <input type="search" name="name"
+                               class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-emerald-500 focus:border-emerald-500"
+                               placeholder="Search facilities..."
+                               value="@searchTerm">
+                    </form>
+                </div>
+
+                <!-- Filter Dropdown -->
+                <div class="relative">
+                    <button id="filterDropdownButton" class="flex items-center justify-between w-full md:w-48 px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        <span>All Categories</span>
+                        <i class="fas fa-chevron-down ml-2 text-xs transition-transform duration-200"></i>
+                    </button>
+                    <div id="filterDropdown" class="hidden absolute z-10 mt-1 w-full bg-white rounded-md shadow-lg border border-gray-200">
+                        <div class="py-1">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">All Facilities</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Event Spaces</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Sports Facilities</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-emerald-50 hover:text-emerald-600">Meeting Rooms</a>
+                        </div>
                     </div>
-                    <input type="search" name="name"
-                           class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                           placeholder="Search facilities..."
-                           value="@searchTerm">
-                </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-emerald-50 text-emerald-600 mr-4">
+                        <i class="fas fa-building text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Total Facilities</p>
+                        <p class="text-2xl font-bold">24</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-50 text-blue-600 mr-4">
+                        <i class="fas fa-calendar-check text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Available Today</p>
+                        <p class="text-2xl font-bold">18</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-amber-50 text-amber-600 mr-4">
+                        <i class="fas fa-star text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Most Popular</p>
+                        <p class="text-2xl font-bold">Grand Hall</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-50 text-purple-600 mr-4">
+                        <i class="fas fa-clock text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">Avg. Rating</p>
+                        <p class="text-2xl font-bold">4.8/5</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -60,30 +128,35 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @foreach (var facility in Model)
             {
-                <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer facility-card"
-                     onclick="openModal(
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer facility-card group"
+                         onclick="openModal(
                         '@facility.Name',
                         '@facility.Address',
                         '@facility.Description')">
 
-                    <div class="relative h-48 w-full overflow-hidden">
-                        <img src="~/image/facility.png" alt="@facility.Name" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                            <h3 class="text-xl font-semibold text-white">@facility.Name</h3>
+                        <!-- Image with Status Badge -->
+                        <div class="relative h-48 w-full overflow-hidden">
+                            <img src="~/image/facility.png" alt="@facility.Name" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute top-2 right-2">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Available</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                <h3 class="text-xl font-semibold text-white">@facility.Name</h3>
+                                <div class="flex items-center mt-1">
+                                    <i class="fas fa-users text-white text-xs mr-1"></i>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="p-4">
-                        <div class="flex items-center text-sm text-gray-500 mb-2">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                            <span>@facility.Address</span>
+                        <!-- Facility Details -->
+                        <div class="p-4">
+                            <div class="flex items-center text-sm text-gray-500 mb-2">
+                                <i class="fas fa-map-marker-alt mr-1.5 text-xs"></i>
+                                <span class="truncate">@facility.Address</span>
+                            </div>
+                            <p class="text-gray-700 text-sm line-clamp-2 mb-3">@facility.Description</p>
                         </div>
-                        <p class="text-gray-700 line-clamp-2">@facility.Description</p>
                     </div>
-                </div>
             }
         </div>
     </div>
@@ -103,26 +176,65 @@
                 <div class="sm:flex sm:items-start">
                     <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                         <div class="flex justify-between items-start">
-                            <h3 id="modalFacilityName" class="text-2xl leading-6 font-bold text-gray-900 mb-4"></h3>
-                            <button type="button" onclick="closeModal()" class="text-gray-400 hover:text-gray-500">
-                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                </svg>
+                            <div>
+                                <h3 id="modalFacilityName" class="text-2xl font-bold text-gray-900 mb-1"></h3>
+                                <div class="flex items-center text-sm text-gray-500 mb-4">
+                                    <i class="fas fa-map-marker-alt mr-1.5"></i>
+                                    <span id="modalFacilityAddress"></span>
+                                </div>
+                            </div>
+                            <button type="button" onclick="closeModal()" class="text-gray-400 hover:text-gray-500 focus:outline-none">
+                                <i class="fas fa-times"></i>
                             </button>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
+                            <!-- Facility Image -->
+                            <div class="relative">
                                 <img id="modalFacilityImage" src="~/image/facility.png" alt="Facility" class="w-full h-64 object-cover rounded-lg">
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4">
+                                    <div class="flex items-center text-white text-sm">
+                                        <i class="fas fa-users mr-2"></i>
+                                        <span id="modalFacilityCapacity"></span>
+                                    </div>
+                                </div>
                             </div>
+
+                            <!-- Facility Details -->
                             <div class="space-y-4">
                                 <div>
-                                    <h4 class="text-sm font-medium text-gray-500">Address</h4>
-                                    <p id="modalFacilityAddress" class="mt-1 text-gray-900"></p>
+                                    <h4 class="text-sm font-medium text-gray-500 mb-2">Description</h4>
+                                    <p id="modalFacilityDescription" class="text-gray-900 text-sm"></p>
                                 </div>
+
                                 <div>
-                                    <h4 class="text-sm font-medium text-gray-500">Description</h4>
-                                    <p id="modalFacilityDescription" class="mt-1 text-gray-900"></p>
+                                    <h4 class="text-sm font-medium text-gray-500 mb-2">Amenities</h4>
+                                    <div id="modalFacilityAmenities" class="flex flex-wrap gap-2"></div>
+                                </div>
+
+                                <!-- Booking Steps -->
+                                <div class="pt-2">
+                                    <h4 class="text-sm font-medium text-gray-500 mb-3">How to Book</h4>
+                                    <div class="booking-steps space-y-3">
+                                        <div class="booking-step flex items-start">
+                                            <div class="flex-shrink-0 bg-emerald-100 text-emerald-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5">
+                                                1
+                                            </div>
+                                            <p class="text-sm text-gray-700">Select your preferred date and time</p>
+                                        </div>
+                                        <div class="booking-step flex items-start">
+                                            <div class="flex-shrink-0 bg-emerald-100 text-emerald-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5">
+                                                2
+                                            </div>
+                                            <p class="text-sm text-gray-700">Review booking details</p>
+                                        </div>
+                                        <div class="booking-step flex items-start">
+                                            <div class="flex-shrink-0 bg-emerald-100 text-emerald-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5">
+                                                3
+                                            </div>
+                                            <p class="text-sm text-gray-700">Complete your reservation</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -130,10 +242,10 @@
                 </div>
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                    Book Now
+                <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-emerald-600 text-base font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 sm:ml-3 sm:w-auto sm:text-sm">
+                    <i class="fas fa-calendar-plus mr-2"></i> Book Now
                 </button>
-                <button type="button" onclick="closeModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                <button type="button" onclick="closeModal()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                     Cancel
                 </button>
             </div>
@@ -142,10 +254,43 @@
 </div>
 
 <script>
-    function openModal(name, address, description) {
+    // Toggle filter dropdown
+    document.getElementById('filterDropdownButton').addEventListener('click', function() {
+        const dropdown = document.getElementById('filterDropdown');
+        const icon = this.querySelector('i');
+
+        dropdown.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('filterDropdown');
+        const button = document.getElementById('filterDropdownButton');
+
+        if (!button.contains(event.target) {
+            dropdown.classList.add('hidden');
+            button.querySelector('i').classList.remove('rotate-180');
+        }
+    });
+
+    function openModal(name, address, description, capacity, amenities) {
         document.getElementById('modalFacilityName').textContent = name;
         document.getElementById('modalFacilityAddress').textContent = address;
         document.getElementById('modalFacilityDescription').textContent = description;
+        document.getElementById('modalFacilityCapacity').textContent = 'Capacity: ' + capacity;
+
+        // Add amenities
+        const amenitiesContainer = document.getElementById('modalFacilityAmenities');
+        amenitiesContainer.innerHTML = '';
+        amenities.split(',').forEach(amenity => {
+            if (amenity.trim()) {
+                const tag = document.createElement('span');
+                tag.className = 'bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded-full';
+                tag.textContent = amenity.trim();
+                amenitiesContainer.appendChild(tag);
+            }
+        });
 
         // Show modal
         document.getElementById('facilityModal').classList.remove('hidden');
