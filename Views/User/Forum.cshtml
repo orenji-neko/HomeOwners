@@ -1,228 +1,239 @@
 ﻿@{
-	ViewData["Title"] = "Forum";
+    ViewData["Title"] = "Forum";
 }
 
-<style>
-    html {
-        scroll-behavior: smooth;
-        font-family: 'PT Sans Narrow', sans-serif;
-        overflow-y: scroll;
-        overflow-x: hidden;
-    }
-
-        html::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        html::-webkit-scrollbar-track {
-            background: #f0f0f0;
-        }
-
-        html::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 4px;
-            border: 2px solid #f0f0f0;
-        }
-
-            html::-webkit-scrollbar-thumb:hover {
-                background-color: #555;
-            }
-</style>
-
-<div class="bg-gray-100 p-10 mt-[-10px]">
-    <div class="max-w-7xl mx-auto pt-15">
-        <h2 class="text-3xl font-bold relative after:content-[''] after:block after:mt-1 after:w-15 after:h-1 after:bg-green-500 after:absolute after:left-0">
-            <span>Forums</span>
-        </h2>
-        <div class="flex flex-wrap gap-2 mt-4">
-            <input type="search" class="p-2 px-4 border rounded-lg w-100 shadow-inner shadow-lg" placeholder="Let's share what is going on your mind..."> 
-            <button class="whitespace-nowrap text-white p-2 px-4 border border-green-300 bg-green-300 rounded-lg">Start a discussion</button>
-        </div>
-        <!-- Filter Tabs -->
-        <div class="flex flex-wrap gap-2 my-4">
-            <div class="border bg-green-300 rounded-xl text-white text-l p-2 px-4 whitespace-nowrap">Newest & Recent</div>
-            <div class="border border-green-300 rounded-xl text-black text-l p-2 px-4 whitespace-nowrap">Popular of the day</div>
-            <div class="border border-green-300 rounded-xl text-black text-l p-2 px-4 whitespace-nowrap">General discussion</div>
-            <div class="border border-green-300 rounded-xl text-black text-l p-2 px-4 whitespace-nowrap">Community announcement</div>
-            <div class="border border-green-300 rounded-xl text-black text-l p-2 px-4 whitespace-nowrap flex">
-                Filter
-                <img src="~/image/announce7.png" class="w-6 h-6 ml-2">
+<div class="min-h-screen bg-gray-50 mt-30">
+    <!-- Forum Header -->
+    <div class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900">Community Forums</h1>
+                    <p class="mt-2 text-sm text-gray-600">Connect, share, and learn with your neighbors</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
+                        </svg>
+                        New Discussion
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <!-- Main Content Grid -->
-    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
-        <!-- Left Column - Announcement Cards -->
-        <div class="flex-1 flex flex-col gap-6">
-            <!-- First Announcement Card -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-5">
-                <div class="flex flex-col lg:flex-row ">
-                    <img src="~/image/forum4.png" class="w-auto h-full">
-                    <div class="pl-5 w-full">
-                        <div class="flex justify-between w-full">
-                            <h2 class="text-lg text-bold">Buying & Selling Forum</h2>
-                            <img src="~/image/forum9.png" class="w-auto h-7">
-                        </div>
-                        <div class="py-2">
-                            <span class="mb-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Classified</span>
-                            <span class="my-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Marketplace</span>
-                            <div class="flex flex-row mt-10 items-center">
-                                <img src="~/image/forum.png" class="w-auto h-full">
-                                <div class="flex justify-between w-full items-center">
-                                    <div class="flex flex-col ml-2">
-                                        <span class="text-xs">Maria Garcia</span>
-                                        <span class="text-xs text-gray-500">2 weeks ago</span>
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        <span>1,024 Views</span>
-                                        <span class="ml-3">839 Likes</span>
-                                        <span class="ml-3">742 Comments</span>
-                                    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Main Forum Content -->
+            <div class="lg:w-2/3">
+                <!-- Search and Filter -->
+                <div class="bg-white rounded-lg shadow p-4 mb-6">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                    </svg>
                                 </div>
-                            </div>        
+                                <input type="text" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" placeholder="Search discussions...">
+                            </div>
+                        </div>
+                        <div class="flex space-x-2 overflow-x-auto pb-2">
+                            <button class="whitespace-nowrap px-4 py-2 text-sm font-medium rounded-md bg-green-100 text-green-800">All Topics</button>
+                            <button class="whitespace-nowrap px-4 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">Popular</button>
+                            <button class="whitespace-nowrap px-4 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">Buy/Sell</button>
+                            <button class="whitespace-nowrap px-4 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">Home & DIY</button>
+                            <button class="whitespace-nowrap px-4 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-100">Neighborhood</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-5">
-                <div class="flex flex-col lg:flex-row ">
-                    <img src="~/image/forum7.png" class="w-auto h-full">
-                    <div class="pl-5 w-full">
-                        <div class="flex justify-between w-full">
-                            <h2 class="text-lg text-bold">Home & DIY Forum</h2>
-                            <img src="~/image/forum9.png" class="w-auto h-7">
-                        </div>
-                        <div class="py-2">
-                            <span class="mb-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Home & Family</span>
-                            <span class="my-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Lifestyle</span>
-                            <span class="my-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Practical Interest</span>
-                            <div class="flex flex-row mt-10 items-center">
-                                <img src="~/image/forum6.png" class="w-auto h-full">
-                                <div class="flex justify-between w-full items-center">
-                                    <div class="flex flex-col ml-2">
-                                        <span class="text-xs">James Smith</span>
-                                        <span class="text-xs text-gray-500">4 weeks ago</span>
+
+                <!-- Discussion Threads -->
+                <div class="space-y-4">
+                    <!-- Thread Card -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-300">
+                        <div class="p-6">
+                            <div class="flex items-start">
+                                <img class="h-16 w-16 rounded-full flex-shrink-0" src="~/image/forum.png" alt="User avatar">
+                                <div class="ml-4 flex-1">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Buying & Selling</span>
+                                            <span class="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">Marketplace</span>
+                                        </div>
+                                        <button class="text-gray-400 hover:text-gray-500">
+                                            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                                            </svg>
+                                        </button>
                                     </div>
-                                    <div class="text-sm text-gray-500">
-                                        <span>1,396 Views</span>
-                                        <span class="ml-3">643 Likes</span>
-                                        <span class="ml-3">581 Comments</span>
+                                    <h3 class="mt-2 text-lg font-medium text-gray-900">Looking to buy gently used furniture</h3>
+                                    <p class="mt-1 text-gray-600">Moving into a new apartment and looking for quality used furniture - especially a sofa and dining set. Budget friendly options preferred.</p>
+                                    <div class="mt-4 flex items-center justify-between">
+                                        <div class="flex items-center text-sm text-gray-500">
+                                            <span>Maria Garcia</span>
+                                            <span class="mx-1">•</span>
+                                            <span>2 weeks ago</span>
+                                        </div>
+                                        <div class="flex space-x-4">
+                                            <span class="inline-flex items-center text-sm text-gray-500">
+                                                <svg class="mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                                </svg>
+                                                1,024
+                                            </span>
+                                            <span class="inline-flex items-center text-sm text-gray-500">
+                                                <svg class="mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                                                </svg>
+                                                839
+                                            </span>
+                                            <span class="inline-flex items-center text-sm text-gray-500">
+                                                <svg class="mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+                                                </svg>
+                                                742
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Additional Thread Cards (similar structure) -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-300">
+                        <!-- Home & DIY Forum Thread -->
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-300">
+                        <!-- Neighborhood Talk Thread -->
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-300">
+                        <!-- Mortgage Forum Thread -->
+                    </div>
+
+                    <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-300">
+                        <!-- Home Decor Thread -->
+                    </div>
                 </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-5">
-                <div class="flex flex-col lg:flex-row ">
-                    <img src="~/image/forum8.png" class="w-auto h-full">
-                    <div class="pl-5 w-full">
-                        <div class="flex justify-between w-full">
-                            <h2 class="text-lg text-bold">Neighbordhood Talk Forum</h2>
-                            <img src="~/image/forum10.png" class="w-auto h-7">
-                        </div>
-                        <div class="py-2">
-                            <span class="mb-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Community Forum</span>
-                            <span class="mb-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">General Discussion Forum</span>
-                            <span class="my-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Connect & Engage</span>
-                            <div class="flex flex-row mt-10 items-center">
-                                <img src="~/image/forum1.png" class="w-auto h-full">
-                                <div class="flex justify-between w-full items-center">
-                                    <div class="flex flex-col ml-2">
-                                        <span class="text-xs">David LEe</span>
-                                        <span class="text-xs text-gray-500">5 weeks ago</span>
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        <span>908 Views</span>
-                                        <span class="ml-3">734 Likes</span>
-                                        <span class="ml-3">455 Comments</span>
-                                    </div>
-                                </div>
-                            </div>        
+
+                <!-- Pagination -->
+                <div class="mt-8 flex items-center justify-between">
+                    <button class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        Previous
+                    </button>
+                    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-center">
+                        <div>
+                            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">1</a>
+                                <a href="#" aria-current="page" class="z-10 bg-green-50 border-green-500 text-green-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">2</a>
+                                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">3</a>
+                                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+                                <a href="#" class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">8</a>
+                                <a href="#" class="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">Next</a>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-5">
-                <div class="flex flex-col lg:flex-row ">
-                    <img src="~/image/forum5.png" class="w-auto h-full">
-                    <div class="pl-5 w-full">
-                        <div class="flex justify-between w-full">
-                            <h2 class="text-lg text-bold">Mortgage and Financing Forum</h2>
-                            <img src="~/image/forum10.png" class="w-auto h-7">
-                        </div>
-                        <div class="py-2">
-                            <span class="mb-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Financial Matters</span>
-                            <span class="my-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Homeownership</span>
-                            <span class="my-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Money & Investment</span>
-                            <div class="flex flex-row mt-10 items-center">
-                                <img src="~/image/forum3.png" class="w-auto h-full">
-                                <div class="flex justify-between w-full items-center">
-                                    <div class="flex flex-col ml-2">
-                                        <span class="text-xs">Sofia Rodriquez</span>
-                                        <span class="text-xs text-gray-500">7 weeks ago</span>
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        <span>1,778 Views</span>
-                                        <span class="ml-3">1,589 Likes</span>
-                                        <span class="ml-3">1,181 Comments</span>
-                                    </div>
-                                </div>
-                            </div>        
-                        </div>
+
+            <!-- Sidebar -->
+            <div class="lg:w-1/3">
+                <!-- Popular Topics -->
+                <div class="bg-white overflow-hidden shadow rounded-lg mb-6">
+                    <div class="px-6 py-5 border-b border-gray-200">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Popular Topics
+                        </h3>
+                    </div>
+                    <div class="px-6 py-4">
+                        <ul class="space-y-4">
+                            <li>
+                                <a href="#" class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-green-600">#</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 hover:text-green-600">Local furniture marketplace</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-green-600">#</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 hover:text-green-600">Home renovation tips</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-green-600">#</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 hover:text-green-600">Neighborhood events</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-green-600">#</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 hover:text-green-600">Mortgage advice</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-start">
+                                    <span class="flex-shrink-0 h-6 w-6 text-green-600">#</span>
+                                    <span class="ml-3 text-sm font-medium text-gray-900 hover:text-green-600">Interior design ideas</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden p-5">
-                <div class="flex flex-col lg:flex-row ">
-                    <img src="~/image/forum2.png" class="w-auto h-full">
-                    <div class="pl-5 w-full">
-                        <div class="flex justify-between w-full">
-                            <h2 class="text-lg text-bold">Home Decor & Styling Forum</h2>
-                            <img src="~/image/forum10.png" class="w-auto h-7">
-                        </div>
-                        <div class="py-2">
-                            <span class="mb-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Community Forum</span>
-                            <span class="mb-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">General Discussion Forum</span>
-                            <span class="my-5 border border-green-300 text-xs bg-green-300 rounded-xl whitespace-nowrap py-2 px-4">Connect & Engage</span>
-                            <div class="flex flex-row mt-10 items-center">
-                                <img src="~/image/forum.png" class="w-auto h-full">
-                                <div class="flex justify-between w-full items-center">
-                                    <div class="flex flex-col ml-2">
-                                        <span class="text-xs">Maria Garcia</span>
-                                        <span class="text-xs text-gray-500">2 weeks ago</span>
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        <span>632 Views</span>
-                                        <span class="ml-3">471 Likes</span>
-                                        <span class="ml-3">380 Comments</span>
-                                    </div>
-                                </div>
-                            </div>
+
+                <!-- Community Guidelines -->
+                <div class="bg-white overflow-hidden shadow rounded-lg">
+                    <div class="px-6 py-5 border-b border-gray-200">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            Community Guidelines
+                        </h3>
+                    </div>
+                    <div class="px-6 py-4">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-2 text-sm text-gray-700">Be respectful to all members</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-2 text-sm text-gray-700">Keep discussions relevant</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-2 text-sm text-gray-700">No spam or self-promotion</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="flex-shrink-0 h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="ml-2 text-sm text-gray-700">Report inappropriate content</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="#" class="text-sm font-medium text-green-600 hover:text-green-500">Read full guidelines &rarr;</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        <!-- Right Column - Pinned Announcement -->
-        
-    </div>
-        <div class="lg:w-1/3">
-            <div class="bg-white rounded-lg shadow-md p-6 sticky top-25">
-                <h2 class="text-2xl font-bold mb-4 border-b flex">
-                    Pinned Announcement
-                    <img src="~/image/announce1.png" class="w-6 h-6 ml-13">
-                </h2>
-                <div class="flex flex-col gap-y-3">
-                    <span class="flex justify-between">
-                        Buying & Selling Forum
-                        <img src="~/image/forum11.png" class="w-auto h-6">
-                    </span>
-                    <span class="flex justify-between">
-                        Home & DIY Forum
-                        <img src="~/image/forum11.png" class="w-auto h-6">
-                    </span>
                 </div>
             </div>
         </div>
+    </div>
 </div>
