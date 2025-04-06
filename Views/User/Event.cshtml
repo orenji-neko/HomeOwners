@@ -1,87 +1,93 @@
 ﻿@{
     ViewData["Title"] = "Event";
 }
+<link rel="stylesheet" href="styles.css" />
 
 <style>
-    html {
+    html, body {
         scroll-behavior: smooth;
         font-family: 'PT Sans Narrow', sans-serif;
-        overflow-y: scroll;
+        overflow-y: auto;
         overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
-        html::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        html::-webkit-scrollbar-track {
-            background: #f0f0f0;
-        }
-
-        html::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 4px;
-            border: 2px solid #f0f0f0;
-        }
-
-    html::-webkit-scrollbar-thumb:hover {
-        background-color: #555;
+    ::-webkit-scrollbar {
+        width: 8px;
     }
+
+    ::-webkit-scrollbar-track {
+        background: #f0f0f0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+        border: 2px solid #f0f0f0;
+    }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
 
     .front {
         left: 50%;
         transform: translateX(-50%) scale(1);
         z-index: 30;
         opacity: 1;
+        filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
     }
-
 
     .middle-right {
         left: 60%;
-        transform: translateX(-50%) scale(0.8);
+        transform: translateX(-50%) scale(0.9);
         z-index: 20;
         opacity: 0.8;
     }
 
     .back-right {
         left: 70%;
-        transform: translateX(-50%) scale(0.6);
+        transform: translateX(-50%) scale(0.8);
         z-index: 10;
         opacity: 0.6;
     }
 
     .middle-left {
         left: 40%;
-        transform: translateX(-50%) scale(0.8);
+        transform: translateX(-50%) scale(0.9);
         z-index: 20;
         opacity: 0.8;
     }
 
     .back-left {
         left: 30%;
-        transform: translateX(-50%) scale(0.6);
+        transform: translateX(-50%) scale(0.8);
         z-index: 10;
         opacity: 0.6;
     }
 
-
     .hidden {
         display: none;
     }
-    
+
     .carousel {
         height: 600px;
         position: relative;
+        perspective: 1000px;
     }
-    
+
     .carousel-item {
         width: var(--img-width, 600px);
         height: var(--img-height, 500px);
-        transition: all 0.3s ease-in-out;
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
     }
-    
+
     .indicator {
         height: 12px;
         width: 12px;
@@ -90,97 +96,335 @@
         cursor: pointer;
         transition: all 0.3s ease;
     }
-    
-    .indicator.active {
-        background-color: #4CAF50 !important;
-        transform: scale(1.2);
+
+        .indicator.active {
+            background-color: #4CAF50 !important;
+            transform: scale(1.3);
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+        }
+
+    /* Modal styles */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+    .modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 900px;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+    }
+
+    .modal.active .modal-content {
+        transform: translateY(0);
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #888;
+        transition: color 0.2s;
+    }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+    /* Calendar styles */
+    .calendar {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+        .calendar th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .calendar td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            height: 80px;
+            vertical-align: top;
+            position: relative;
+        }
+
+        .calendar .other-month {
+            background-color: #f9f9f9;
+            color: #aaa;
+        }
+
+        .calendar .today {
+            background-color: #e8f5e9;
+        }
+
+    .event-day {
+        background-color: #e8f5e9;
+        position: relative;
+    }
+
+    .event-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+
+    .event-info {
+        font-size: 12px;
+        margin-top: 5px;
+        padding: 3px;
+        background-color: #f1f8e9;
+        border-radius: 3px;
+    }
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .calendar-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #4CAF50;
+    }
+
+    .calendar-nav {
+        display: flex;
+        gap: 10px;
+    }
+
+        .calendar-nav button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+            .calendar-nav button:hover {
+                background-color: #3d8b40;
+            }
+
+    /* Event details styles */
+    .event-details {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    .event-highlight {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+        .event-highlight img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .event-highlight h3 {
+            margin: 0;
+            color: #4CAF50;
+        }
+
+        .event-highlight p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+    /* Responsive adjustments */
+
+
+    .flex-1 {
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .carousel {
+        height: 400px;
+    }
+
+    .carousel-item {
+        --img-width: 400px;
+        --img-height: 350px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .event-highlight {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .event-highlight img {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+
     }
 </style>
 
-<div class="bg-gray-100 p-10 mt-[-10px] justify-center">
-    <h2 class="text-center mt-20 text-3xl font-bold">
-        <span class="inline-block after:content-[''] after:block after:w-15 after:h-1 after:bg-green-500 after:absolute after:left-1/2 after:-translate-x-1/2 after:mt-1">
+<div class="bg-gray-100 p-4 md:p-10 mt-20 justify-center">
+    <h2 class="text-center mt-10 md:mt-20 text-2xl md:text-3xl font-bold mb-5">
+        <span class="text-2xl md:text-3xl font-bold relative mb-6 after:content-[''] after:block after:mt-1 after:w-15 after:h-1 after:bg-green-500 after:absolute after:left-0">
             March Events
         </span>
     </h2>
 
-    <div class=" relative w-full flex justify-center items-center overflow-hidden carousel">
+    <div class="relative w-full flex justify-center items-center overflow-hidden carousel">
         <!-- Images with extra wide sizes -->
-        <img src="~/image/event1.png" 
+        <img src="~/image/event1.png"
              class="absolute object-cover cursor-pointer carousel-item transition-all duration-300 ease-in-out"
-             data-width="650" 
-             data-height="500">
-             
-        <img src="~/image/event2.png" 
+             data-width="650"
+             data-height="500"
+             data-event-id="1">
+
+        <img src="~/image/event2.png"
              class="absolute object-cover cursor-pointer carousel-item transition-all duration-300 ease-in-out"
-             data-width="650" 
-             data-height="500">
-             
-        <img src="~/image/event3.png" 
+             data-width="650"
+             data-height="500"
+             data-event-id="2">
+
+        <img src="~/image/event3.png"
              class="absolute object-cover cursor-pointer carousel-item transition-all duration-300 ease-in-out"
-             data-width="650" 
-             data-height="500">
-             
-        <img src="~/image/event1.png" 
+             data-width="650"
+             data-height="500"
+             data-event-id="3">
+
+        <img src="~/image/event1.png"
              class="absolute object-cover cursor-pointer carousel-item transition-all duration-300 ease-in-out"
-             data-width="650" 
-             data-height="500">
-             
-        <img src="~/image/event2.png" 
+             data-width="650"
+             data-height="500"
+             data-event-id="4">
+
+        <img src="~/image/event2.png"
              class="absolute object-cover cursor-pointer carousel-item transition-all duration-300 ease-in-out"
-             data-width="650" 
-             data-height="500">
+             data-width="650"
+             data-height="500"
+             data-event-id="5">
     </div>
-    
+
     <!-- Dynamic image indicators -->
-    <div class="flex justify-center mt-8 pb-5 indicators-container">
+    <div class="flex justify-center mt-4 md:mt-8 pb-5 indicators-container">
         <!-- Indicators will be generated by JavaScript -->
     </div>
 </div>
 
-<div class="flex flex-row p-10 justify-between items-stretch h-[80vh] min-h-[600px]">
+<div class="flex flex-col md:flex-row p-4 md:p-10 justify-between items-stretch min-h-[600px]">
     <!-- Text content - takes minimum necessary width -->
-    <div class="flex-1 max-w-[50%] ml-10 my-10">
-        <h2 class="text-3xl font-bold relative mb-6 after:content-[''] after:block after:mt-1 after:w-15 after:h-1 after:bg-green-500 after:absolute after:left-0">
+    <div class="flex-1 max-w-full md:max-w-[50%] md:ml-10 my-4 md:my-10 p-10">
+        <h2 class="text-2xl md:text-3xl font-bold relative mb-6 after:content-[''] after:block after:mt-1 after:w-15 after:h-1 after:bg-green-500 after:absolute after:left-0">
             Blooms And Beginnings
         </h2>
-        <p class="text-l text-justify pr-20">
+        <p class="text-base md:text-lg text-justify pr-0 md:pr-20">
             March Wedding Soirée<br><br>
-            This March, LendSpace was transformed into a haven of love and elegance for the "Blossoms & Beginnings" wedding celebration. 
-            The venue radiated romance with stunning floral arrangements and soft ambient lighting, creating a magical atmosphere for 
+            This March, LendSpace was transformed into a haven of love and elegance for the "Blossoms & Beginnings" wedding celebration.
+            The venue radiated romance with stunning floral arrangements and soft ambient lighting, creating a magical atmosphere for
             the couple's big day. Guests danced, dined, and celebrated in a space that perfectly combined sophistication and comfort.<br><br>
             Celebrate life's milestones with LendSpace where every detail blooms beautifully.
         </p>
-        <button class="mr-12 mt-5 border border-none bg-green-300 rounded-md flex items-center justify-center text-center h-13 w-50 text-white">
+        <button id="seeMoreBtn" class="mt-4 md:mt-5 px-6 py-2 md:py-3 border border-none bg-green-500 hover:bg-green-600 rounded-md flex items-center justify-center text-center text-white transition-colors duration-300">
             See More →
         </button>
     </div>
-    
-    <!-- Image container - takes remaining space -->    
-    <div class="flex-1 max-w-[50%] h-100 mr-10 my-10">
-        <img src="~/image/event4.png" 
-             alt="Facility Image 1" 
-             class="w-full h-full object-cover rounded-lg shadow-lg">
+
+    <!-- Image container - takes remaining space -->
+    <div class="flex-1 max-w-full md:max-w-[50%] h-auto md:h-50 md:mr-10 my-4 md:my-10">
+        <img src="~/image/event4.png"
+             alt="Facility Image 1"
+             class="w-full h-100 object-cover rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
     </div>
 </div>
 
-
-<div class="flex justify-center ">
-    <div class="h-4 w-4 bg-green-300 rounded-full mx-3"></div>
-    <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
-    <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
-    <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
-    <div class="h-4 w-4 bg-gray-300 rounded-full mx-3"></div>
-    <div class="h-4 w-4 bg-gray-300 rounded-full mx-3 mb-15"></div>
+<!-- Modal -->
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="calendar-header">
+            <h2 class="calendar-title">Event Calendar</h2>
+            <div class="calendar-nav">
+                <button id="prevMonth">&lt; Prev</button>
+                <button id="nextMonth">Next &gt;</button>
+            </div>
+        </div>
+        <div id="calendar"></div>
+        <div class="event-details">
+            <h3>Upcoming Events</h3>
+            <div class="event-highlight">
+                <img src="~/image/event1.png" alt="Event 1">
+                <div>
+                    <h3>Blooms And Beginnings</h3>
+                    <p><strong>Date:</strong> March 15, 2023</p>
+                    <p><strong>Time:</strong> 4:00 PM - 10:00 PM</p>
+                    <p><strong>Location:</strong> LendSpace Main Hall</p>
+                </div>
+            </div>
+            <div class="event-highlight">
+                <img src="~/image/event2.png" alt="Event 2">
+                <div>
+                    <h3>Spring Gala</h3>
+                    <p><strong>Date:</strong> March 22, 2023</p>
+                    <p><strong>Time:</strong> 6:00 PM - 11:00 PM</p>
+                    <p><strong>Location:</strong> LendSpace Garden</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+        // Carousel functionality
         const items = document.querySelectorAll('.carousel-item');
         const indicatorsContainer = document.querySelector('.indicators-container');
         let currentIndex = 0;
+        let autoSlideInterval;
 
+        // Initialize carousel items
         items.forEach(item => {
             const width = item.getAttribute('data-width');
             const height = item.getAttribute('data-height');
@@ -188,24 +432,28 @@
             if (height) item.style.setProperty('--img-height', `${height}px`);
         });
 
+        // Create indicators
         items.forEach((_, index) => {
             const indicator = document.createElement('div');
             indicator.className = `indicator ${index === 0 ? 'bg-green-500 active' : 'bg-gray-300'}`;
             indicator.addEventListener('click', () => {
                 currentIndex = index;
                 updateCarousel();
+                resetAutoSlide();
             });
             indicatorsContainer.appendChild(indicator);
         });
+
         const indicators = document.querySelectorAll('.indicator');
 
+        // Update carousel positions
         const updateCarousel = () => {
             items.forEach((item, index) => {
                 item.classList.remove('front', 'middle-right', 'back-right', 'middle-left', 'back-left', 'hidden');
-                
+
                 const itemCount = items.length;
                 const diff = (index - currentIndex + itemCount) % itemCount;
-                
+
                 if (index === currentIndex) {
                     item.classList.add('front');
                 } else if (diff === 1 || diff === -itemCount + 1) {
@@ -221,6 +469,7 @@
                 }
             });
 
+            // Update indicators
             indicators.forEach((indicator, index) => {
                 if (index === currentIndex) {
                     indicator.classList.add('active');
@@ -234,11 +483,12 @@
             });
         };
 
+        // Handle click navigation
         items.forEach((item, index) => {
             item.addEventListener('click', () => {
                 const itemCount = items.length;
                 const diff = (index - currentIndex + itemCount) % itemCount;
-                
+
                 if (diff === 1 || diff === -itemCount + 1) {
                     currentIndex = (currentIndex + 1) % itemCount;
                 }
@@ -246,14 +496,158 @@
                     currentIndex = (currentIndex - 1 + itemCount) % itemCount;
                 }
                 updateCarousel();
+                resetAutoSlide();
             });
         });
 
+        // Auto slide functionality
+        const startAutoSlide = () => {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            }, 5000);
+        };
+
+        const resetAutoSlide = () => {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        };
+
+        // Initialize carousel and start auto slide
         updateCarousel();
-        
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % items.length;
-            updateCarousel();
-        }, 3000);
+        startAutoSlide();
+
+        // Pause auto slide on hover
+        const carousel = document.querySelector('.carousel');
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+
+        carousel.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('eventModal');
+        const seeMoreBtn = document.getElementById('seeMoreBtn');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Static event data
+        const events = [
+            { id: 1, date: '2023-03-15', title: 'Wedding', time: '4:00 PM', location: 'Main Hall' },
+            { id: 2, date: '2023-03-18', title: 'Corporate', time: '9:00 AM', location: 'Conference Room' },
+            { id: 3, date: '2023-03-22', title: 'Gala', time: '6:00 PM', location: 'Garden' },
+            { id: 4, date: '2023-03-25', title: 'Birthday', time: '2:00 PM', location: 'Party Room' },
+            { id: 5, date: '2023-03-29', title: 'Seminar', time: '10:00 AM', location: 'Auditorium' }
+        ];
+
+        // Calendar functionality
+        let currentMonth = 2; // March (0-indexed)
+        let currentYear = 2023;
+
+        function generateCalendar(month, year) {
+            const calendarEl = document.getElementById('calendar');
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+            const startingDay = firstDay.getDay();
+
+            // Adjust month and year if needed
+            if (month < 0) {
+                month = 11;
+                year--;
+            } else if (month > 11) {
+                month = 0;
+                year++;
+            }
+
+            currentMonth = month;
+            currentYear = year;
+
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                              "July", "August", "September", "October", "November", "December"];
+
+            document.querySelector('.calendar-title').textContent = `${monthNames[month]} ${year}`;
+
+            let calendarHTML = '<table class="calendar"><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>';
+
+            // Fill in empty cells before the first day of the month
+            for (let i = 0; i < startingDay; i++) {
+                calendarHTML += '<td class="other-month"></td>';
+            }
+
+            // Current month's days
+            let dayCount = 1;
+            let today = new Date();
+            let isToday = false;
+
+            for (let i = startingDay; i < 42; i++) {
+                if (dayCount > daysInMonth) {
+                    // Stop after the last day of the month
+                    if (i % 7 !== 0) {
+                        // Fill remaining cells in the last row
+                        calendarHTML += '<td class="other-month"></td>';
+                    }
+                    break;
+                } else {
+                    // Check if current day is today
+                    isToday = dayCount === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+
+                    // Check if current day has events
+                    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(dayCount).padStart(2, '0')}`;
+                    const dayEvents = events.filter(event => event.date === dateStr);
+
+                    let dayClass = '';
+                    if (isToday) dayClass = 'today';
+                    if (dayEvents.length > 0) dayClass += ' event-day';
+
+                    calendarHTML += `<td class="${dayClass.trim()}">${dayCount}`;
+
+                    if (dayEvents.length > 0) {
+                        calendarHTML += `<div class="event-info"><span class="event-dot"></span>${dayEvents[0].title}</div>`;
+                    }
+
+                    calendarHTML += `</td>`;
+                    dayCount++;
+                }
+
+                if (i % 7 === 6 && dayCount <= daysInMonth) {
+                    calendarHTML += '</tr><tr>';
+                }
+            }
+
+            calendarHTML += '</tr></table>';
+            calendarEl.innerHTML = calendarHTML;
+        }
+
+        // Initialize calendar for March 2023
+        generateCalendar(2, 2023);
+
+        // Calendar navigation
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            generateCalendar(currentMonth - 1, currentYear);
+        });
+
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            generateCalendar(currentMonth + 1, currentYear);
+        });
+
+        // Modal controls
+        seeMoreBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
     });
 </script>
