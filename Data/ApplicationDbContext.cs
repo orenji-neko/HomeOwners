@@ -85,6 +85,27 @@ namespace HomeOwners.Data
                     RoleId = userRole.Id,
                     UserId = user.Id,
                 });
+            // Admin Account
+            var admin = new User
+            {
+                Id = "test-admin-0001",
+                Email = "admin@email.com",
+                NormalizedEmail = "ADMIN@EMAIL.COM",
+                UserName = "admin@email.com",
+                NormalizedUserName = "ADMIN@EMAIL.COM",
+                LastName = "Doe",
+                FirstName = "John",
+                MidInitial = "A",
+                Address = "123 User St."
+            };
+            admin.PasswordHash = hasher.HashPassword(user, "password");
+            builder.Entity<User>().HasData(admin);
+            builder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = adminRole.Id,
+                    UserId = admin.Id,
+                });
 
             // Facility seeding
             builder.Entity<Facility>().HasData([
